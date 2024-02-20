@@ -1,22 +1,20 @@
 import {useDraggable} from '@dnd-kit/core';
 import {Chip} from '@nextui-org/chip';
+import {IDraggableNode} from '@/app/pattern-2/node/IDraggableNode';
 
 interface BlockProps {
-    id: string;
-    index: number;
-    top: number;
-    left: number;
+    node: IDraggableNode;
 }
 
-export const Block = ({id, index, top, left}: BlockProps) => {
-    const {attributes, listeners, setNodeRef, transform} = useDraggable({id});
+export const Node = ({node}: BlockProps) => {
+    const {attributes, listeners, setNodeRef, transform} = useDraggable({id: node.id});
 
     const {x: translateX, y: translateY} = transform || {x: 0, y: 0};
 
     const style = {
         position: 'absolute' as 'absolute',
-        left: left + translateX,
-        top: top + translateY,
+        left: node.position.left + translateX,
+        top: node.position.top + translateY,
     };
 
     return (
@@ -26,7 +24,7 @@ export const Block = ({id, index, top, left}: BlockProps) => {
             {...listeners}
             style={style}
             className='block'>
-            <Chip>Block {index + 1}</Chip>
+            <Chip>{node.node_parameters + ' #' + node.id}</Chip>
         </div>
     );
 };
