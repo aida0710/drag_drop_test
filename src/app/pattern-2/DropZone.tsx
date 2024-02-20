@@ -1,55 +1,77 @@
 import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors} from '@dnd-kit/core';
-import {Block} from '@/app/pattern-2/Block';
+import {Node} from '@/app/pattern-2/Node';
 import React, {useState} from 'react';
-
-interface ItemInterface {
-    id: string;
-    position: {left: number; top: number};
-}
+import {IDraggableNode} from '@/app/pattern-2/node/IDraggableNode';
+import {Lines} from '@/app/pattern-2/Lines';
+import {NodeTypes} from '@/app/pattern-2/node/NodeTypes';
+import {LineTypes} from '@/app/pattern-2/line/LineTypes';
+import {restrictToWindowEdges} from '@dnd-kit/modifiers';
 
 export const DropZone = () => {
-    const [blocks, setBlocks] = useState<ItemInterface[]>([
-        {id: '1', position: {left: 100, top: 100}},
-        {id: '2', position: {left: 200, top: 200}},
-        {id: '3', position: {left: 300, top: 300}},
+    const [node, setNode] = useState<IDraggableNode[]>([
+        {
+            id: '1',
+            position: {left: 100, top: 100},
+            node_parameters: NodeTypes.Gateway,
+            target_line: {
+                type: LineTypes.Category5e,
+                id: '2',
+            },
+        },
+        {
+            id: '2',
+            position: {left: 200, top: 200},
+            node_parameters: NodeTypes.L3Switch,
+            target_line: {
+                type: LineTypes.NonLimited,
+                id: '3',
+            },
+        },
+        {
+            id: '3',
+            position: {left: 300, top: 300},
+            node_parameters: NodeTypes.Server,
+            target_line: {
+                type: LineTypes.None,
+            },
+        },
     ]);
-
     const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor));
 
-    const handleDragEnd = (event: DragEndEvent) => {
+    const handleDragEnd = (event: DragEndEvent): void => {
         const {active, delta} = event;
         if (active) {
-            const activeBlock: ItemInterface | undefined = blocks.find((block: ItemInterface): boolean => block.id === active.id);
-            if (activeBlock) {
+            const activeNode: IDraggableNode | undefined = node.find((block: IDraggableNode): boolean => block.id === active.id);
+            if (activeNode) {
                 const newBlockPosition: {top: any; left: any} = {
-                    left: activeBlock.position.left + delta.x,
-                    top: activeBlock.position.top + delta.y,
+                    left: activeNode.position.left + delta.x,
+                    top: activeNode.position.top + delta.y,
                 };
-                console.log(`BlockId[${active.id}]を移動させました:`, newBlockPosition);
+                console.log(`NodeId[${active.id}]を移動させました:`, newBlockPosition);
 
-                const activeBlockIndex: number = blocks.indexOf(activeBlock);
-                const newBlocks: ItemInterface[] = [...blocks];
+                const activeBlockIndex: number = node.indexOf(activeNode);
+                const newBlocks: IDraggableNode[] = [...node];
                 newBlocks[activeBlockIndex] = {
-                    ...activeBlock,
+                    ...activeNode,
                     position: newBlockPosition,
                 };
-                setBlocks(newBlocks);
+                setNode(newBlocks);
             }
         }
     };
 
     return (
         <DndContext
+            autoScroll={true}
+            modifiers={[restrictToWindowEdges]}
             sensors={sensors}
             onDragEnd={handleDragEnd}>
             <div className='relative h-full w-full overflow-hidden'>
-                {blocks.map((block: ItemInterface, index: number) => (
-                    <Block
-                        key={block.id}
-                        id={block.id}
-                        index={index}
-                        top={block.position.top}
-                        left={block.position.left}
+                <Lines nodes={node} />
+                {node.map((node: IDraggableNode, index: number) => (
+                    <Node
+                        key={index}
+                        node={node}
                     />
                 ))}
             </div>
