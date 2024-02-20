@@ -1,10 +1,10 @@
 'use client';
 
 import {DropTargetMonitor, useDrop} from 'react-dnd';
-import {ItemTypes} from '@/app/index/ItemTypes';
+import {ItemTypes} from '@/app/pattern-1/ItemTypes';
 import React, {useState} from 'react';
-import {Block} from '@/app/index/Block';
-import {useWindowSize} from '@/app/index/useWindowSize';
+import {Block} from '@/app/pattern-1/Block';
+import {useWindowSize} from '@/app/pattern-1/useWindowSize';
 
 interface ItemInterface {
     id: string;

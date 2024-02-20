@@ -1,7 +1,7 @@
 'use client';
 
 import {DragSourceMonitor, useDrag} from 'react-dnd';
-import {ItemTypes} from '@/app/index/ItemTypes';
+import {ItemTypes} from '@/app/pattern-1/ItemTypes';
 import React from 'react';
 
 interface BlockProps {

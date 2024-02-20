@@ -1,17 +1,18 @@
-"use client";
+'use client';
 
 import React from 'react';
-import {DndProvider} from "react-dnd";
-import {DropZone} from "@/app/index/DropZone";
-import {HTML5Backend} from "react-dnd-html5-backend";
 
 export default function Page() {
     return (
-        <div className="w-full h-screen">
-            <DndProvider backend={HTML5Backend}>
-                <DropZone/>
-            </DndProvider>
+        <div className='h-screen w-full'>
+            <ul>
+                <li>
+                    <a href='/pattern-1'>pattern1</a>
+                </li>
+                <li>
+                    <a href='/pattern-2'>pattern2</a>
+                </li>
+            </ul>
         </div>
-
     );
 }
