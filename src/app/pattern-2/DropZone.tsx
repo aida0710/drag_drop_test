@@ -47,7 +47,7 @@ export const DropZone = () => {
                     left: activeNode.position.left + delta.x,
                     top: activeNode.position.top + delta.y,
                 };
-                console.log(`NodeId[${active.id}]を移動させました:`, newBlockPosition);
+                console.log(`NodeId #${active.id}を移動させました:`, newBlockPosition);
 
                 const activeBlockIndex: number = node.indexOf(activeNode);
                 const newBlocks: IDraggableNode[] = [...node];
