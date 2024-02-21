@@ -1,4 +1,4 @@
-import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors} from '@dnd-kit/core';
+import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, TouchSensor, useSensor, useSensors} from '@dnd-kit/core';
 import {Node} from '@/app/(index)/Node';
 import React, {useState} from 'react';
 import {IDraggableNode} from '@/app/(index)/node/IDraggableNode';
@@ -36,7 +36,8 @@ export const DropZone = () => {
             },
         },
     ]);
-    const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor));
+
+    const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor), useSensor(TouchSensor));
 
     const handleDragEnd = (event: DragEndEvent): void => {
         const {active, delta} = event;
