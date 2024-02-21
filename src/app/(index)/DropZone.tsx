@@ -1,10 +1,10 @@
 import {DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors} from '@dnd-kit/core';
-import {Node} from '@/app/pattern-2/Node';
+import {Node} from '@/app/(index)/Node';
 import React, {useState} from 'react';
-import {IDraggableNode} from '@/app/pattern-2/node/IDraggableNode';
-import {Lines} from '@/app/pattern-2/Lines';
-import {NodeTypes} from '@/app/pattern-2/node/NodeTypes';
-import {LineTypes} from '@/app/pattern-2/line/LineTypes';
+import {IDraggableNode} from '@/app/(index)/node/IDraggableNode';
+import {Lines} from '@/app/(index)/Lines';
+import {NodeTypes} from '@/app/(index)/node/NodeTypes';
+import {LineTypes} from '@/app/(index)/line/LineTypes';
 import {restrictToWindowEdges} from '@dnd-kit/modifiers';
 
 export const DropZone = () => {

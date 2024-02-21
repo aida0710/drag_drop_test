@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {IDraggableNode} from '@/app/pattern-2/node/IDraggableNode';
-import {LineParameters} from '@/app/pattern-2/line/LineParameters';
-import {NodeParameters} from '@/app/pattern-2/node/NodeParameters';
-import {INodeParameters} from '@/app/pattern-2/node/INodeParameters';
-import {ILineParameters} from '@/app/pattern-2/line/ILineParameters';
+import {IDraggableNode} from '@/app/(index)/node/IDraggableNode';
+import {LineParameters} from '@/app/(index)/line/LineParameters';
+import {NodeParameters} from '@/app/(index)/node/NodeParameters';
+import {INodeParameters} from '@/app/(index)/node/INodeParameters';
+import {ILineParameters} from '@/app/(index)/line/ILineParameters';
 
 interface LineProps {
     nodes: IDraggableNode[];

@@ -1,6 +1,6 @@
-import {NodeTypes} from '@/app/pattern-2/node/NodeTypes';
+import {NodeTypes} from '@/app/(index)/node/NodeTypes';
 import {match} from 'ts-pattern';
-import {INodeParameters} from '@/app/pattern-2/node/INodeParameters';
+import {INodeParameters} from '@/app/(index)/node/INodeParameters';
 
 /**
  * INodeParametersを返します。

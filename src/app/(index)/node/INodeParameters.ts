@@ -1,4 +1,4 @@
-import {NodeTypes} from '@/app/pattern-2/node/NodeTypes';
+import {NodeTypes} from '@/app/(index)/node/NodeTypes';
 
 export interface INodeParameters {
     node_type: NodeTypes;

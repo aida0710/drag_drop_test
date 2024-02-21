@@ -1,5 +1,5 @@
-import {LineTypes} from '@/app/pattern-2/line/LineTypes';
-import {NodeTypes} from '@/app/pattern-2/node/NodeTypes';
+import {LineTypes} from '@/app/(index)/line/LineTypes';
+import {NodeTypes} from '@/app/(index)/node/NodeTypes';
 
 /**
  * ドラッグ可能なノードの情報を保持します。

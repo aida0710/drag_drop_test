@@ -1,6 +1,6 @@
 import {useDraggable} from '@dnd-kit/core';
 import {Chip} from '@nextui-org/chip';
-import {IDraggableNode} from '@/app/pattern-2/node/IDraggableNode';
+import {IDraggableNode} from '@/app/(index)/node/IDraggableNode';
 
 interface BlockProps {
     node: IDraggableNode;

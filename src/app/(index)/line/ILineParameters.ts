@@ -1,4 +1,4 @@
-import {LineTypes} from '@/app/pattern-2/line/LineTypes';
+import {LineTypes} from '@/app/(index)/line/LineTypes';
 
 export interface ILineParameters {
     type: LineTypes;

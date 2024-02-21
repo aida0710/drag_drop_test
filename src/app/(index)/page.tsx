@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import {DropZone} from '@/app/pattern-2/DropZone';
+import {DropZone} from '@/app/(index)/DropZone';
 
 export default function Page() {
     return (
