@@ -5,7 +5,7 @@ import {IDraggableNode} from '@/app/(index)/node/IDraggableNode';
 import {Lines} from '@/app/(index)/Lines';
 import {NodeTypes} from '@/app/(index)/node/NodeTypes';
 import {LineTypes} from '@/app/(index)/line/LineTypes';
-import {restrictToWindowEdges} from '@dnd-kit/modifiers';
+import {restrictToFirstScrollableAncestor, restrictToParentElement, restrictToWindowEdges} from '@dnd-kit/modifiers';
 
 export const DropZone = () => {
     const [node, setNode] = useState<IDraggableNode[]>([
@@ -62,8 +62,8 @@ export const DropZone = () => {
 
     return (
         <DndContext
-            autoScroll={true}
-            modifiers={[restrictToWindowEdges]}
+            autoScroll={false}
+            modifiers={[restrictToWindowEdges, restrictToParentElement,restrictToFirstScrollableAncestor]}
             sensors={sensors}
             onDragEnd={handleDragEnd}>
             <div className='relative h-full w-full overflow-hidden'>
