@@ -63,7 +63,7 @@ export const DropZone = () => {
     return (
         <DndContext
             autoScroll={false}
-            modifiers={[restrictToWindowEdges, restrictToParentElement,restrictToFirstScrollableAncestor]}
+            modifiers={[restrictToWindowEdges, restrictToParentElement, restrictToFirstScrollableAncestor]}
             sensors={sensors}
             onDragEnd={handleDragEnd}>
             <div className='relative h-full w-full overflow-hidden'>

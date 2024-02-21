@@ -1,9 +1,10 @@
-import React, {ReactNode, Suspense} from 'react';
+import React, {ReactNode} from 'react';
 import '@/styles/globals.css';
 import {Metadata} from 'next';
 import {Inter} from 'next/font/google';
 import {NextFont} from 'next/dist/compiled/@next/font';
-import {Providers} from '@/app/providers';
+import {ThemeProvider} from '@/app/layout/theme-provider';
+import {Toaster} from '@/shadcn/ui/toaster';
 
 const site_name: string = 'Drag and drop test';
 const site_description: string = 'Drag and drop test';
@@ -22,9 +23,14 @@ export default async function RootLayout({children}: {children: ReactNode}) {
     return (
         <html lang='ja'>
             <body className={inter.className}>
-                <Suspense>
-                    <Providers>{children}</Providers>
-                </Suspense>
+                <Toaster />
+                <ThemeProvider
+                    attribute='class'
+                    defaultTheme='dark'
+                    enableSystem
+                    disableTransitionOnChange>
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );

@@ -1,9 +1,8 @@
 import type {Config} from 'tailwindcss';
-import {nextui} from '@nextui-org/theme';
 
 const config = {
     darkMode: ['class'],
-    content: ['./src/shadcn/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}', './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'],
+    content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
     prefix: '',
     theme: {
         container: {
@@ -70,7 +69,7 @@ const config = {
             },
         },
     },
-    plugins: [nextui(), require('tailwindcss-animate')],
+    plugins: [require('tailwindcss-animate')],
 } satisfies Config;
 
 export default config;

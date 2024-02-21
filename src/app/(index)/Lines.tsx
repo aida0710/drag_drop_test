@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {IDraggableNode} from '@/app/(index)/node/IDraggableNode';
 import {LineParameters} from '@/app/(index)/line/LineParameters';
 import {NodeParameters} from '@/app/(index)/node/NodeParameters';
@@ -10,7 +10,6 @@ interface LineProps {
 }
 
 export const Lines = ({nodes}: LineProps) => {
-
     return (
         <svg style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}>
             {nodes.map((sourceNode: IDraggableNode, index: number) => {
