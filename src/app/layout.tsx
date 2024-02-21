@@ -23,11 +23,7 @@ export default async function RootLayout({children}: {children: ReactNode}) {
         <html lang='ja'>
             <body className={inter.className}>
                 <Suspense>
-                    <Providers>
-                        <div className='flex h-screen flex-col'>
-                            <div className='mb-auto'>{children}</div>
-                        </div>
-                    </Providers>
+                    <Providers>{children}</Providers>
                 </Suspense>
             </body>
         </html>
