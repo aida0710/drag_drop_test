@@ -37,13 +37,13 @@ export const FlowContents = () => {
     useEffect((): void => {
         setNodes(initialNodes);
         setEdges(initialEdges);
-    }, [setEdges, setNodes]);
+    }, []);
 
     const onNodesChange: OnNodesChange = useCallback(
         (changes: NodeChange[]): void => {
             const updatedNodes: Node[] = applyNodeChanges(changes, nodes);
             setNodes(updatedNodes);
-            console.log(updatedNodes);
+            console.log('updatedNodes', updatedNodes);
         },
         [setNodes, nodes],
     );
@@ -52,6 +52,7 @@ export const FlowContents = () => {
         (changes: EdgeChange[]): void => {
             const updatedEdges: Edge[] = applyEdgeChanges(changes, edges);
             setEdges(updatedEdges);
+            console.log('updatedEdges', updatedEdges);
         },
         [setEdges, edges],
     );
@@ -60,13 +61,13 @@ export const FlowContents = () => {
         (connection: Connection): void => {
             const newEdge: Edge[] = addEdge(connection, edges);
             setEdges(newEdge);
+            console.log('newEdge', newEdge);
         },
         [setEdges, edges],
     );
     return (
         <div className='h-screen'>
             <ReactFlow
-                key={JSON.stringify(nodes) + JSON.stringify(edges)}
                 nodes={nodes}
                 edges={edges}
                 onNodesChange={onNodesChange}
