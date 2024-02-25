@@ -5,6 +5,7 @@ import {ExportButton} from '@/app/(index)/components/menu-items/file/export-butt
 import {ImportButton} from '@/app/(index)/components/menu-items/file/import-button';
 import {DataResetButton} from '@/app/(index)/components/menu-items/file/data-reset-button';
 import {ThemeButton} from '@/app/(index)/components/menu-items/setting/theme-button';
+import {BackgroundVariantButton} from '@/app/(index)/components/menu-items/setting/background-variant-button';
 
 export const IndexMenubar = () => {
     return (
@@ -64,7 +65,7 @@ export const IndexMenubar = () => {
                 <MenubarTrigger>Settings</MenubarTrigger>
                 <MenubarContent>
                     <ThemeButton />
-                    <MenubarItem>Feedback</MenubarItem>
+                    <BackgroundVariantButton />
                 </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>

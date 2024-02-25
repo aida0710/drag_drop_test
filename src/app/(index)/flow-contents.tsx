@@ -2,6 +2,7 @@ import ReactFlow, {
     addEdge,
     applyEdgeChanges,
     applyNodeChanges,
+    Background,
     Connection,
     Controls,
     Edge,
@@ -13,7 +14,6 @@ import ReactFlow, {
     OnNodesChange,
 } from 'reactflow';
 import React, {useCallback, useEffect} from 'react';
-import {BackgroundVariantChange} from '@/app/(index)/flow/background-variant-change';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
 
 const initialNodes: Node[] = [
@@ -75,7 +75,10 @@ export const FlowContents = () => {
                 onConnect={onConnect}
                 nodesDraggable={true}
                 fitView>
-                <BackgroundVariantChange />
+                <Background
+                    color='#696969'
+                    variant={settings.backgroundVariant}
+                />
                 <Controls />
             </ReactFlow>
         </div>
