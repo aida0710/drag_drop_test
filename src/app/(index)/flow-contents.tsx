@@ -37,7 +37,7 @@ export const FlowContents = () => {
     useEffect((): void => {
         setNodes(initialNodes);
         setEdges(initialEdges);
-    }, []);
+    }, [setEdges, setNodes]);
 
     const onNodesChange: OnNodesChange = useCallback(
         (changes: NodeChange[]): void => {
