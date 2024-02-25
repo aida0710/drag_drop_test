@@ -1,6 +1,10 @@
 import {Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger} from '@/shadcn/ui/menubar';
 import {LineTypes} from '@/app/(index)/flow/line/LineTypes';
 import {NodeTypes} from '@/app/(index)/flow/node/NodeTypes';
+import {ExportButton} from '@/app/(index)/components/menu-items/file/export-button';
+import {ImportButton} from '@/app/(index)/components/menu-items/file/import-button';
+import {DataResetButton} from '@/app/(index)/components/menu-items/file/data-reset-button';
+import {ThemeButton} from '@/app/(index)/components/menu-items/setting/theme-button';
 
 export const IndexMenubar = () => {
     return (
@@ -8,10 +12,10 @@ export const IndexMenubar = () => {
             <MenubarMenu>
                 <MenubarTrigger>File</MenubarTrigger>
                 <MenubarContent>
-                    <MenubarItem>Data Import</MenubarItem>
-                    <MenubarItem>Data Export</MenubarItem>
+                    <ImportButton />
+                    <ExportButton />
                     <MenubarSeparator />
-                    <MenubarItem>Data Reset</MenubarItem>
+                    <DataResetButton />
                 </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
@@ -54,6 +58,20 @@ export const IndexMenubar = () => {
                     {Object.keys(LineTypes).map((key: string) => {
                         return <MenubarItem key={key}>{LineTypes[key as keyof typeof LineTypes]}</MenubarItem>;
                     })}
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger>Settings</MenubarTrigger>
+                <MenubarContent>
+                    <ThemeButton />
+                    <MenubarItem>Feedback</MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger>Help</MenubarTrigger>
+                <MenubarContent>
+                    <MenubarItem>Documentation</MenubarItem>
+                    <MenubarItem>Feedback</MenubarItem>
                 </MenubarContent>
             </MenubarMenu>
         </Menubar>
