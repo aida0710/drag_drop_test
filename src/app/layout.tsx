@@ -6,8 +6,8 @@ import {NextFont} from 'next/dist/compiled/@next/font';
 import {ThemeProvider} from '@/app/layout/theme-provider';
 import {Toaster} from '@/shadcn/ui/toaster';
 
-const site_name: string = 'Drag and drop test';
-const site_description: string = 'Drag and drop test';
+const site_name: string = 'Network Simulator';
+const site_description: string = 'Web simulator for network study';
 
 export const metadata: Metadata = {
     title: {
