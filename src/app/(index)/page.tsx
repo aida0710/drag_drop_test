@@ -1,14 +1,15 @@
 'use client';
 
 import React from 'react';
-import {DropZone} from '@/app/(index)/DropZone';
 import {IndexMenubar} from '@/app/(index)/components/index-menubar';
+import 'reactflow/dist/style.css';
+import {FlowContents} from '@/app/(index)/flow-contents';
 
 export default function Page() {
     return (
-        <div className='h-screen w-full'>
+        <div className='w-full'>
             <IndexMenubar />
-            <DropZone />
+            <FlowContents />
         </div>
     );
 }

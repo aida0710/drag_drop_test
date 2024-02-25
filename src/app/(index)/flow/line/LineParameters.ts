@@ -1,6 +1,6 @@
-import {LineTypes} from '@/app/(index)/line/LineTypes';
+import {LineTypes} from '@/app/(index)/flow/line/LineTypes';
 import {match} from 'ts-pattern';
-import {ILineParameters} from '@/app/(index)/line/ILineParameters';
+import {ILineParameters} from '@/app/(index)/flow/line/ILineParameters';
 
 /**
  * ILineParametersを返します。

@@ -1,6 +1,6 @@
 import {Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger} from '@/shadcn/ui/menubar';
-import {LineTypes} from '@/app/(index)/line/LineTypes';
-import {NodeTypes} from '@/app/(index)/node/NodeTypes';
+import {LineTypes} from '@/app/(index)/flow/line/LineTypes';
+import {NodeTypes} from '@/app/(index)/flow/node/NodeTypes';
 
 export const IndexMenubar = () => {
     return (

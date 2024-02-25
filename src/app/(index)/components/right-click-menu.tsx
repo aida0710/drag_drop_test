@@ -10,7 +10,7 @@ import {
     ContextMenuTrigger,
 } from '@/shadcn/ui/context-menu';
 import React from 'react';
-import {NodeTypes} from '@/app/(index)/node/NodeTypes';
+import {NodeTypes} from '@/app/(index)/flow/node/NodeTypes';
 
 interface RightClickMenuProps {
     children: React.ReactNode;

@@ -1,4 +1,4 @@
-import {NodeTypes} from '@/app/(index)/node/NodeTypes';
+import {NodeTypes} from '@/app/(index)/flow/node/NodeTypes';
 
 export interface INodeParameters {
     node_type: NodeTypes;
