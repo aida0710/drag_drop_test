@@ -39,24 +39,44 @@ export const FlowContents = () => {
         setEdges(initialEdges);
     }, [setEdges, setNodes]);
 
-    const onNodesChange: OnNodesChange = useCallback((changes: NodeChange[]) => setNodes((nds: Node[]) => applyNodeChanges(changes, nds)), [setNodes]);
-    const onEdgesChange: OnEdgesChange = useCallback((changes: EdgeChange[]) => setEdges((eds: Edge[]) => applyEdgeChanges(changes, eds)), [setEdges]);
-    const onConnect: OnConnect = useCallback((connection: Connection) => setEdges((eds: Edge[]) => addEdge(connection, eds)), [setEdges]);
+    const onNodesChange: OnNodesChange = useCallback(
+        (changes: NodeChange[]): void => {
+            const updatedNodes: Node[] = applyNodeChanges(changes, nodes);
+            setNodes(updatedNodes);
+            console.log(updatedNodes);
+        },
+        [setNodes, nodes],
+    );
 
+    const onEdgesChange: OnEdgesChange = useCallback(
+        (changes: EdgeChange[]): void => {
+            const updatedEdges: Edge[] = applyEdgeChanges(changes, edges);
+            setEdges(updatedEdges);
+        },
+        [setEdges, edges],
+    );
+
+    const onConnect: OnConnect = useCallback(
+        (connection: Connection): void => {
+            const newEdge: Edge[] = addEdge(connection, edges);
+            setEdges(newEdge);
+        },
+        [setEdges, edges],
+    );
     return (
-        <DataContext.Provider value={{nodes, edges, settings, setNodes, setEdges, setSettings}}>
-            <div className='h-screen'>
-                <ReactFlow
-                    nodes={nodes}
-                    edges={edges}
-                    onNodesChange={onNodesChange}
-                    onEdgesChange={onEdgesChange}
-                    onConnect={onConnect}
-                    fitView>
-                    <BackgroundVariantChange />
-                    <Controls />
-                </ReactFlow>
-            </div>
-        </DataContext.Provider>
+        <div className='h-screen'>
+            <ReactFlow
+                key={JSON.stringify(nodes) + JSON.stringify(edges)}
+                nodes={nodes}
+                edges={edges}
+                onNodesChange={onNodesChange}
+                onEdgesChange={onEdgesChange}
+                onConnect={onConnect}
+                nodesDraggable={true}
+                fitView>
+                <BackgroundVariantChange />
+                <Controls />
+            </ReactFlow>
+        </div>
     );
 };
