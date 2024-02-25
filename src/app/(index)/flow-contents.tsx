@@ -19,13 +19,21 @@ import {DataContext} from '@/app/(index)/flow/context/data-context';
 const initialNodes: Node[] = [
     {
         id: '1',
-        data: {label: 'Hello'},
+        data: {label: 'ルータ'},
         position: {x: 0, y: 0},
+        type: 'input',
     },
     {
         id: '2',
-        data: {label: 'World'},
+        data: {label: 'L3Switch'},
+        position: {x: 50, y: 50},
+        type: 'default',
+    },
+    {
+        id: '3',
+        data: {label: 'サーバ'},
         position: {x: 100, y: 100},
+        type: 'output',
     },
 ];
 
@@ -43,7 +51,6 @@ export const FlowContents = () => {
         (changes: NodeChange[]): void => {
             const updatedNodes: Node[] = applyNodeChanges(changes, nodes);
             setNodes(updatedNodes);
-            console.log('updatedNodes', updatedNodes);
         },
         [setNodes, nodes],
     );
@@ -52,7 +59,6 @@ export const FlowContents = () => {
         (changes: EdgeChange[]): void => {
             const updatedEdges: Edge[] = applyEdgeChanges(changes, edges);
             setEdges(updatedEdges);
-            console.log('updatedEdges', updatedEdges);
         },
         [setEdges, edges],
     );
@@ -61,7 +67,6 @@ export const FlowContents = () => {
         (connection: Connection): void => {
             const newEdge: Edge[] = addEdge(connection, edges);
             setEdges(newEdge);
-            console.log('newEdge', newEdge);
         },
         [setEdges, edges],
     );
