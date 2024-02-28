@@ -13,10 +13,10 @@ import ReactFlow, {
     OnEdgesChange,
     OnNodesChange,
 } from 'reactflow';
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
 import {NodeTypes} from "@/app/(index)/flow/node/NodeTypes";
-import {GatewayNode} from "@/app/(index)/flow/node/items/gateway-node";
+import ContextMenu, {ContextMenuProps} from './flow/components/ContextMenu';
 
 const initialNodes: Node[] = [
     {
@@ -51,7 +51,9 @@ const initialNodes: Node[] = [
 const initialEdges: Edge[] = [];
 
 export const FlowContents = () => {
-    const {nodes, edges, settings, setNodes, setEdges, setSettings} = React.useContext(DataContext);
+    const {nodes, edges, settings, setNodes, setEdges} = React.useContext(DataContext);
+    const [menu, setMenu] = useState<ContextMenuProps | null>(null);
+    const ref = useRef<HTMLDivElement>(null);
 
     useEffect((): void => {
         setNodes(initialNodes);
@@ -81,9 +83,28 @@ export const FlowContents = () => {
         },
         [setEdges, edges],
     );
+
+    const onNodeContextMenu = useCallback(
+        (event: React.MouseEvent, node: Node): void => {
+            event.preventDefault();
+            const coordinate: DOMRect | undefined = ref.current?.getBoundingClientRect();
+            coordinate && setMenu({
+                id: node.id,
+                top: event.clientY < coordinate.height - 200 ? event.clientY : undefined,
+                left: event.clientX < coordinate.width - 200 ? event.clientX : undefined,
+                right: event.clientX >= coordinate.width - 200 ? coordinate.width - event.clientX : undefined,
+                bottom: event.clientY >= coordinate.height - 200 ? coordinate.height - event.clientY : undefined,
+            });
+        },
+        [setMenu],
+    );
+
+    const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
+
     return (
         <div className='h-screen'>
             <ReactFlow
+                ref={ref}
                 nodes={nodes}
                 edges={edges}
                 onNodesChange={onNodesChange}
@@ -91,12 +112,15 @@ export const FlowContents = () => {
                 onConnect={onConnect}
                 nodesDraggable={true}
                 nodeTypes={NodeTypes}
+                onPaneClick={onPaneClick}
+                onNodeContextMenu={onNodeContextMenu}
                 fitView>
                 <Background
                     color='#696969'
                     variant={settings.backgroundVariant}
                 />
-                <Controls />
+                {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
+                <Controls/>
             </ReactFlow>
         </div>
     );
