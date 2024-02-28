@@ -15,6 +15,8 @@ import ReactFlow, {
 } from 'reactflow';
 import React, {useCallback, useEffect} from 'react';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
+import {NodeTypes} from "@/app/(index)/flow/node/NodeTypes";
+import {GatewayNode} from "@/app/(index)/flow/node/items/gateway-node";
 
 const initialNodes: Node[] = [
     {
@@ -25,7 +27,10 @@ const initialNodes: Node[] = [
     },
     {
         id: '2',
-        data: {label: 'L3Switch'},
+        data: {
+            label: 'L3Switch',
+            nodeParameters: 'L3Switch',
+        },
         position: {x: 50, y: 50},
         type: 'default',
     },
@@ -35,6 +40,12 @@ const initialNodes: Node[] = [
         position: {x: 100, y: 100},
         type: 'output',
     },
+    {
+        id: '4',
+        data: {label: 'ゲートウェイ'},
+        position: {x: 150, y: 150},
+        type: 'Gateway',
+    }
 ];
 
 const initialEdges: Edge[] = [];
@@ -79,6 +90,7 @@ export const FlowContents = () => {
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
                 nodesDraggable={true}
+                nodeTypes={NodeTypes}
                 fitView>
                 <Background
                     color='#696969'
