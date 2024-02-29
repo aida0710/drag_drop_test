@@ -1,6 +1,4 @@
 import {Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger} from '@/shadcn/ui/menubar';
-import {LineTypes} from '@/app/(index)/flow/line/LineTypes';
-import {NodeTypes} from '@/app/(index)/flow/node/NodeTypes';
 import {ExportButton} from '@/app/(index)/components/menu-items/file/export-button';
 import {ImportButton} from '@/app/(index)/components/menu-items/file/import-button';
 import {DataResetButton} from '@/app/(index)/components/menu-items/file/data-reset-button';

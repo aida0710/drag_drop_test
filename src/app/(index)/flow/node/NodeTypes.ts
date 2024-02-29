@@ -1,4 +1,4 @@
-import {CustomNode} from "@/app/(index)/flow/node/custom-node";
+import {CustomNode} from '@/app/(index)/flow/node/custom-node';
 
 export const NodeTypes = {
     Gateway: CustomNode,
