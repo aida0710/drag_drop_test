@@ -2,9 +2,19 @@ import {Handle, Node, Position} from 'reactflow';
 import React, {ChangeEvent} from 'react';
 import {Input} from '@/shadcn/ui/input';
 import {Label} from '@/shadcn/ui/label';
-import {CustomNodeProps} from '@/app/(index)/flow/node/CustomNodeProps';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/shadcn/ui/select';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
+
+interface CustomNodeProps {
+    id: string;
+    type: string;
+    data: {
+        label: string;
+        ip_address: string;
+        subnet_mask: string;
+        permitted_communications?: string[];
+    };
+}
 
 export const CustomNode = ({id, type, data}: CustomNodeProps) => {
     const {nodes, setNodes} = React.useContext(DataContext);
