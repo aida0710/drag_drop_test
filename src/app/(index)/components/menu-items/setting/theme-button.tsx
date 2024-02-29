@@ -1,7 +1,6 @@
 import {useTheme} from 'next-themes';
 import React from 'react';
 import {Select, SelectContent, SelectItem, SelectTrigger} from '@/shadcn/ui/select';
-import {SelectIcon} from '@radix-ui/react-select';
 import {Label} from '@/shadcn/ui/label';
 import {MenubarItem} from '@/shadcn/ui/menubar';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
@@ -25,18 +24,9 @@ export const ThemeButton = () => {
                 }}>
                 <SelectTrigger>Theme Change</SelectTrigger>
                 <SelectContent>
-                    <SelectItem value='system'>
-                        <SelectIcon />
-                        System
-                    </SelectItem>
-                    <SelectItem value='dark'>
-                        <SelectIcon />
-                        Dark
-                    </SelectItem>
-                    <SelectItem value='light'>
-                        <SelectIcon />
-                        Light
-                    </SelectItem>
+                    <SelectItem value='system'>System</SelectItem>
+                    <SelectItem value='dark'>Dark</SelectItem>
+                    <SelectItem value='light'>Light</SelectItem>
                 </SelectContent>
             </Select>
         </MenubarItem>
