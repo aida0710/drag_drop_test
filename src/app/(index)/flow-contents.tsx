@@ -39,9 +39,11 @@ let id: number = 2;
 const getId = (): string => `${id++}`;
 
 export const FlowContents = () => {
-    const ref = useRef<HTMLDivElement>(null);
     const {nodes, edges, settings, setNodes, setEdges} = React.useContext(DataContext);
     const [menu, setMenu] = useState<ContextMenuProps | null>(null);
+
+    // 右クリックメニュー
+    const rightClickRef = useRef<HTMLDivElement>(null);
 
     // ドラッグアンドドロップ
     const reactFlowWrapper = useRef(null);
@@ -79,11 +81,11 @@ export const FlowContents = () => {
         [setEdges, edges],
     );
 
-    // ノードの右クリック
+    // 右クリックメニュー
     const onNodeContextMenu = useCallback(
         (event: React.MouseEvent, node: Node): void => {
             event.preventDefault();
-            const pane: DOMRect | undefined = ref.current?.getBoundingClientRect();
+            const pane: DOMRect | undefined = rightClickRef.current?.getBoundingClientRect();
             pane &&
                 setMenu({
                     id: node.id,
@@ -143,6 +145,7 @@ export const FlowContents = () => {
                     </div>
                     <div className='col-span-10'>
                         <ReactFlow
+                            ref={rightClickRef}
                             nodes={nodes}
                             edges={edges}
                             onNodesChange={onNodesChange}
