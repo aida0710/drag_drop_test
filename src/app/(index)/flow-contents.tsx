@@ -21,21 +21,7 @@ import {NodeTypes} from '@/app/(index)/flow/node/NodeTypes';
 import ContextMenu, {ContextMenuProps} from './flow/components/context-menu';
 import {SideMenu} from '@/app/(index)/components/side-menu';
 import {IMiniMapValue} from '@/app/(index)/flow/context/IMiniMapValue';
-
-const initialNodes: Node[] = [
-    {
-        id: '1',
-        type: 'Gateway',
-        position: {x: 0, y: 0},
-        data: {
-            label: 'Gateway',
-            ip_address: '0.0.0.0',
-            subnet_mask: '255.255.255.0',
-        },
-    },
-];
-
-const initialEdges: Edge[] = [];
+import {initialEdges, initialNodes} from '@/app/(index)/InitialData';
 
 let id: number = 2;
 const getId = (): string => `${id++}`;
@@ -160,6 +146,7 @@ export const FlowContents = () => {
                             onInit={setReactFlowInstance}
                             onDrop={onDrop}
                             onDragOver={onDragOver}
+                            proOptions={{hideAttribution: true}}
                             fitView>
                             <Background
                                 color='#696969'
@@ -171,7 +158,7 @@ export const FlowContents = () => {
                                     {...menu}
                                 />
                             )}
-                            {settings.miniMap === IMiniMapValue.Indicate && <MiniMap/>}
+                            {settings.miniMap === IMiniMapValue.Indicate && <MiniMap />}
                             <Controls />
                         </ReactFlow>
                     </div>
