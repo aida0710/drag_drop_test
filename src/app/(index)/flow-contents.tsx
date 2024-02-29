@@ -22,6 +22,7 @@ import ContextMenu, {ContextMenuProps} from './flow/components/context-menu';
 import {SideMenu} from '@/app/(index)/components/side-menu';
 import {IMiniMapValue} from '@/app/(index)/flow/context/IMiniMapValue';
 import {initialEdges, initialNodes} from '@/app/(index)/InitialData';
+import {EdgeTypes, EnumEdgeTypes} from '@/app/(index)/flow/edge/EdgeTypes';
 
 let id: number = 2;
 const getId = (): string => `${id++}`;
@@ -63,7 +64,8 @@ export const FlowContents = () => {
     // ノードの接続
     const onConnect: OnConnect = useCallback(
         (connection: Connection): void => {
-            const newEdge: Edge[] = addEdge(connection, edges);
+            const edge = {...connection, type: 'CustomEdge', data: {type: EnumEdgeTypes.Category5}};
+            const newEdge: Edge[] = addEdge(edge, edges);
             setEdges(newEdge);
         },
         [setEdges, edges],
@@ -141,6 +143,7 @@ export const FlowContents = () => {
                             onConnect={onConnect}
                             nodesDraggable={true}
                             nodeTypes={NodeTypes}
+                            edgeTypes={EdgeTypes}
                             onPaneClick={onPaneClick}
                             onNodeContextMenu={onNodeContextMenu}
                             onInit={setReactFlowInstance}
