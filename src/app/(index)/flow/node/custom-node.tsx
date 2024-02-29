@@ -17,8 +17,8 @@ export const CustomNode = ({id, type, data}: CustomNodeProps) => {
                 className='h-3 w-3 rounded-sm !bg-blue-400'
             />
             <div className='mb-2 text-black'>
-                <div>
-                    <Label className='text-xs'>{data.label}</Label>
+                <div className="flex justify-center items-center">
+                    <Label className='text-sm'>{data.label}</Label>
                     <Label className='ml-1 text-xs text-gray-400'>#{id}</Label>
                 </div>
                 <p className='text-sm'>IPアドレス</p>

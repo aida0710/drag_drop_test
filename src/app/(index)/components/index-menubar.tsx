@@ -4,6 +4,8 @@ import {ImportButton} from '@/app/(index)/components/menu-items/file/import-butt
 import {DataResetButton} from '@/app/(index)/components/menu-items/file/data-reset-button';
 import {ThemeButton} from '@/app/(index)/components/menu-items/setting/theme-button';
 import {BackgroundVariantButton} from '@/app/(index)/components/menu-items/setting/background-variant-button';
+import {MiniMapButton} from '@/app/(index)/components/menu-items/setting/mini-map-button';
+import React from 'react';
 
 export const IndexMenubar = () => {
     return (
@@ -48,6 +50,7 @@ export const IndexMenubar = () => {
                 <MenubarContent>
                     <ThemeButton />
                     <BackgroundVariantButton />
+                    <MiniMapButton />
                 </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>

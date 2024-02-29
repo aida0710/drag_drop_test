@@ -7,6 +7,7 @@ import ReactFlow, {
     Controls,
     Edge,
     EdgeChange,
+    MiniMap,
     Node,
     NodeChange,
     OnConnect,
@@ -19,6 +20,7 @@ import {DataContext} from '@/app/(index)/flow/context/data-context';
 import {NodeTypes} from '@/app/(index)/flow/node/NodeTypes';
 import ContextMenu, {ContextMenuProps} from './flow/components/context-menu';
 import {SideMenu} from '@/app/(index)/components/side-menu';
+import {IMiniMapValue} from '@/app/(index)/flow/context/IMiniMapValue';
 
 const initialNodes: Node[] = [
     {
@@ -169,6 +171,7 @@ export const FlowContents = () => {
                                     {...menu}
                                 />
                             )}
+                            {settings.miniMap === IMiniMapValue.Indicate && <MiniMap/>}
                             <Controls />
                         </ReactFlow>
                     </div>
