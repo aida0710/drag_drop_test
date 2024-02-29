@@ -46,22 +46,6 @@ export const IndexMenubar = () => {
                 </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
-                <MenubarTrigger>Add Element</MenubarTrigger>
-                <MenubarContent>
-                    {Object.keys(NodeTypes).map((key: string) => {
-                        return <MenubarItem key={key}>{NodeTypes[key as keyof typeof NodeTypes]}</MenubarItem>;
-                    })}
-                </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
-                <MenubarTrigger>Add Line</MenubarTrigger>
-                <MenubarContent>
-                    {Object.keys(LineTypes).map((key: string) => {
-                        return <MenubarItem key={key}>{LineTypes[key as keyof typeof LineTypes]}</MenubarItem>;
-                    })}
-                </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
                 <MenubarTrigger>Settings</MenubarTrigger>
                 <MenubarContent>
                     <ThemeButton />
