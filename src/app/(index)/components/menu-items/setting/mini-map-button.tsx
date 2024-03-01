@@ -1,5 +1,4 @@
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from '@/shadcn/ui/select';
-import {BackgroundVariant} from 'reactflow';
 import React from 'react';
 import {Label} from '@/shadcn/ui/label';
 import {MenubarItem} from '@/shadcn/ui/menubar';
