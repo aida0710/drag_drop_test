@@ -14,6 +14,7 @@ import ReactFlow, {
     OnEdgesChange,
     OnNodesChange,
     ReactFlowProvider,
+    SelectionMode,
 } from 'reactflow';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
@@ -21,7 +22,7 @@ import {NodeTypes} from '@/app/(index)/flow/node/NodeTypes';
 import ContextMenu, {ContextMenuProps} from './flow/components/context-menu';
 import {SideMenu} from '@/app/(index)/components/side-menu';
 import {IMiniMapValue} from '@/app/(index)/flow/context/IMiniMapValue';
-import {initialEdges, initialNodes} from '@/app/(index)/InitialData';
+import {initialEdges, initialNodes} from '@/app/(index)/utils/InitialData';
 import {EdgeTypes, EnumEdgeTypes} from '@/app/(index)/flow/edge/EdgeTypes';
 
 let id: number = 2;
@@ -124,6 +125,8 @@ export const FlowContents = () => {
         [reactFlowInstance, setNodes, nodes],
     );
 
+    const panOnDrag: number[] = [1, 2];
+
     return (
         <div className='dndflow h-screen'>
             <ReactFlowProvider>
@@ -150,6 +153,10 @@ export const FlowContents = () => {
                             onDrop={onDrop}
                             onDragOver={onDragOver}
                             proOptions={{hideAttribution: true}}
+                            panOnScroll
+                            selectionOnDrag
+                            panOnDrag={panOnDrag}
+                            selectionMode={SelectionMode.Partial}
                             fitView>
                             <Background
                                 color='#696969'
