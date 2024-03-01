@@ -7,7 +7,7 @@ import {FlowContents} from '@/app/(index)/flow-contents';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
 import {Edge, Node} from 'reactflow';
 import {IDataSettings} from '@/app/(index)/flow/context/IDataSettings';
-import {initialSettings} from '@/app/(index)/InitialData';
+import {initialSettings} from '@/app/(index)/utils/InitialData';
 
 export default function Page() {
     const [nodes, setNodes] = React.useState<Node[]>([]);
