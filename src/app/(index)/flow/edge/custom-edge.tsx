@@ -73,8 +73,14 @@ export const CustomEdge = ({id, data, sourceX, sourceY, targetX, targetY}: EdgeP
                         </SelectTrigger>
                         <SelectContent>
                             <SelectGroup>
-                                {Object.keys(EnumEdgeTypesMap).map((key: string) => {
-                                    return <SelectItem value={key}>{key}</SelectItem>;
+                                {Object.keys(EnumEdgeTypesMap).map((key: string, index: number) => {
+                                    return (
+                                        <SelectItem
+                                            key={index}
+                                            value={key}>
+                                            {key}
+                                        </SelectItem>
+                                    );
                                 })}
                                 <SelectItem
                                     value='delete'
