@@ -77,10 +77,9 @@ export const CustomNode = ({id, type, data}: CustomNodeProps) => {
                                 <SelectValue placeholder='通信' />
                             </SelectTrigger>
                             <SelectContent className='bg-white text-black'>
-                                <SelectItem value='all'>全て</SelectItem>
-                                <SelectItem value='http'>Http</SelectItem>
-                                <SelectItem value='https'>Https</SelectItem>
-                                <SelectItem value='icmp'>ICMP</SelectItem>
+                                <SelectItem value='All'>All</SelectItem>
+                                <SelectItem value='http'>http, https</SelectItem>
+                                <SelectItem value='icmp'>icmp</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
