@@ -1,15 +1,16 @@
-import {MenubarItem} from '@/shadcn/ui/menubar';
-import {Label} from '@/shadcn/ui/label';
-import {Button} from '@/shadcn/ui/button';
 import React from 'react';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
+import {PaletteIcon} from 'lucide-react';
+import {Button, DropdownItem} from '@nextui-org/react';
 
 export const ExportButton = () => {
     const {nodes, edges, settings} = React.useContext(DataContext);
 
     return (
-        <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
-            <Label htmlFor='file_input_data_export'>Data Export</Label>
+        <DropdownItem
+            key='data-export'
+            startContent={<PaletteIcon />}>
+            Data Export
             <Button
                 onClick={(): void => {
                     const data: string = JSON.stringify({nodes, edges, settings});
@@ -21,11 +22,10 @@ export const ExportButton = () => {
                     link.click();
                     setTimeout(() => URL.revokeObjectURL(url), 1000);
                 }}
-                variant='hover_none'
                 id='file_input_data_export'>
                 Export
             </Button>
-        </MenubarItem>
+        </DropdownItem>
     );
 };
 

@@ -1,9 +1,8 @@
 import {useTheme} from 'next-themes';
 import React from 'react';
-import {Select, SelectContent, SelectItem, SelectTrigger} from '@/shadcn/ui/select';
-import {Label} from '@/shadcn/ui/label';
-import {MenubarItem} from '@/shadcn/ui/menubar';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
+import {DropdownItem, Select, SelectItem} from '@nextui-org/react';
+import {PaletteIcon} from 'lucide-react';
 import {ThemeValue} from '@/app/(index)/flow/context/IThemeValue';
 
 export const ThemeButton = () => {
@@ -12,23 +11,38 @@ export const ThemeButton = () => {
     const {setTheme} = useTheme();
 
     return (
-        <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
-            <Label>Theme</Label>
+        <DropdownItem
+            key='theme'
+            startContent={<PaletteIcon />}>
+            Theme
             <Select
-                onValueChange={(value: ThemeValue): void => {
+                labelPlacement='outside'
+                label='Theme Change'
+                selectedKeys={[settings.pageTheme]}
+                onChange={(event: React.ChangeEvent<HTMLSelectElement>): void => {
+                    const value: ThemeValue = event.target.value as ThemeValue;
                     setSettings({
                         ...settings,
                         pageTheme: value,
                     });
                     setTheme(value);
                 }}>
-                <SelectTrigger>Theme Change</SelectTrigger>
-                <SelectContent>
-                    <SelectItem value='system'>System</SelectItem>
-                    <SelectItem value='dark'>Dark</SelectItem>
-                    <SelectItem value='light'>Light</SelectItem>
-                </SelectContent>
+                <SelectItem
+                    key='system'
+                    value='system'>
+                    System
+                </SelectItem>
+                <SelectItem
+                    key='dark'
+                    value='dark'>
+                    Dark
+                </SelectItem>
+                <SelectItem
+                    key='light'
+                    value='light'>
+                    Light
+                </SelectItem>
             </Select>
-        </MenubarItem>
+        </DropdownItem>
     );
 };

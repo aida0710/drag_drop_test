@@ -1,8 +1,8 @@
 import {BezierEdge, Edge, EdgeLabelRenderer, EdgeProps, getStraightPath, useReactFlow} from 'reactflow';
 import React from 'react';
 import {EdgeParameters} from '@/app/(index)/flow/edge/EdgeParameters';
-import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from '@/shadcn/ui/select';
 import {EnumEdgeTypes, EnumEdgeTypesMap} from '@/app/(index)/flow/edge/EdgeTypes';
+import {Select, SelectItem} from '@nextui-org/react';
 
 /**
  * CustomEdgeは、Nodeに比べ制約が多く、EdgePropsを使用する必要がある
@@ -48,7 +48,12 @@ export const CustomEdge = ({id, data, sourceX, sourceY, targetX, targetY}: EdgeP
                     }}
                     className='nodrag nopan'>
                     <Select
-                        onValueChange={(value: EnumEdgeTypes | 'delete'): void => {
+                        variant='bordered'
+                        label='Edge Types'
+                        placeholder={data.type}
+                        className='h-7 max-w-xs'
+                        onChange={(event: React.ChangeEvent<HTMLSelectElement>): void => {
+                            const value: EnumEdgeTypes | 'delete' = event.target.value as EnumEdgeTypes | 'delete';
                             if (value === 'delete') {
                                 setEdges((edges: Edge[]) => edges.filter((edge: Edge): boolean => edge.id !== id));
                             } else {
@@ -68,27 +73,19 @@ export const CustomEdge = ({id, data, sourceX, sourceY, targetX, targetY}: EdgeP
                                 );
                             }
                         }}>
-                        <SelectTrigger className='h-7'>
-                            <SelectValue placeholder={data.type} />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-                                {Object.keys(EnumEdgeTypesMap).map((key: string, index: number) => {
-                                    return (
-                                        <SelectItem
-                                            key={index}
-                                            value={key}>
-                                            {key}
-                                        </SelectItem>
-                                    );
-                                })}
-                                <SelectItem
-                                    value='delete'
-                                    className='text-red-400'>
-                                    Delete Line
-                                </SelectItem>
-                            </SelectGroup>
-                        </SelectContent>
+                        {Object.keys(EnumEdgeTypes).map((key: string) => (
+                            <SelectItem
+                                key={key}
+                                value={key}>
+                                {key}
+                            </SelectItem>
+                        ))}
+                        <SelectItem
+                            key='delete'
+                            value='delete'
+                            className='text-red-400'>
+                            Delete Line
+                        </SelectItem>
                     </Select>
                 </div>
             </EdgeLabelRenderer>

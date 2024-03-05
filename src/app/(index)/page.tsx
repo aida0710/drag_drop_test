@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import {IndexMenubar} from '@/app/(index)/components/index-menubar';
+import {NavbarMenu} from '@/app/(index)/components/navbar-menu';
 import 'reactflow/dist/style.css';
 import {FlowContents} from '@/app/(index)/flow-contents';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
@@ -17,7 +17,7 @@ export default function Page() {
     return (
         <DataContext.Provider value={{nodes, edges, settings, setNodes, setEdges, setSettings}}>
             <div className='w-full'>
-                <IndexMenubar />
+                <NavbarMenu />
                 <FlowContents />
             </div>
         </DataContext.Provider>

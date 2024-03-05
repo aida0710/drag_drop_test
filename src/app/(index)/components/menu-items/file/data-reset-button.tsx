@@ -1,5 +1,13 @@
-import {MenubarItem} from '@/shadcn/ui/menubar';
+import {PaletteIcon} from 'lucide-react';
+import {DropdownItem} from '@nextui-org/react';
+import React from 'react';
 
 export const DataResetButton = () => {
-    return <MenubarItem>Data Reset</MenubarItem>;
+    return (
+        <DropdownItem
+            key='data-reset'
+            startContent={<PaletteIcon />}>
+            Data Reset
+        </DropdownItem>
+    );
 };

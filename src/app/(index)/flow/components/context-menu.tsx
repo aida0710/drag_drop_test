@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {Edge, Node, useReactFlow} from 'reactflow';
-import {Button} from '@/shadcn/ui/button';
 import {genNodeId} from '@/app/(index)/utils/utils';
+import {Button} from '@nextui-org/react';
 
 export interface ContextMenuProps {
     id: string;

@@ -1,9 +1,8 @@
 import {Handle, Node, Position} from 'reactflow';
 import React, {ChangeEvent} from 'react';
-import {Input} from '@/shadcn/ui/input';
-import {Label} from '@/shadcn/ui/label';
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/shadcn/ui/select';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
+import {Input} from '@nextui-org/input';
+import {Select, SelectItem} from '@nextui-org/react';
 
 interface CustomNodeProps {
     id: string;
@@ -28,59 +27,76 @@ export const CustomNode = ({id, type, data}: CustomNodeProps) => {
             />
             <div className='mb-2 text-black'>
                 <div className='flex items-center justify-center'>
-                    <Label className='text-sm'>{data.label}</Label>
-                    <Label className='ml-1 text-xs text-gray-400'>#{id}</Label>
+                    <h3 className='text-sm'>{data.label}</h3>
+                    <h4 className='ml-1 text-xs text-gray-400'>#{id}</h4>
                 </div>
-                <p className='text-sm'>IPアドレス</p>
-                <Input
-                    defaultValue={nodes.find((node: Node): boolean => node.id === id)?.data.ip_address}
-                    autoComplete='off'
-                    id='text'
-                    name='text'
-                    onChange={(event: ChangeEvent<HTMLInputElement>): void => {
-                        const node: Node | undefined = nodes.find((node: Node): boolean => node.id === id);
-                        if (!node) return;
-                        node.data.ip_address = event.target.value;
-                        setNodes([...nodes]);
-                        console.log(nodes);
-                    }}
-                    className='nodrag h-5 bg-white'
-                />
-                <p className='text-sm'>サブネットマスク</p>
-                <Input
-                    defaultValue={nodes.find((node: Node): boolean => node.id === id)?.data.subnet_mask}
-                    autoComplete='off'
-                    id='text'
-                    name='text'
-                    onChange={(event: ChangeEvent<HTMLInputElement>): void => {
-                        const node: Node | undefined = nodes.find((node: Node): boolean => node.id === id);
-                        if (!node) return;
-                        node.data.subnet_mask = event.target.value;
-                        setNodes([...nodes]);
-                        console.log(nodes);
-                    }}
-                    className='nodrag h-5 bg-white'
-                />
+                <div>
+                    <p className='text-sm'>IPアドレス</p>
+                    <Input
+                        aria-label='ip-address-input'
+                        size='sm'
+                        defaultValue={nodes.find((node: Node): boolean => node.id === id)?.data.ip_address}
+                        autoComplete='off'
+                        id='text'
+                        name='text'
+                        onChange={(event: ChangeEvent<HTMLInputElement>): void => {
+                            const node: Node | undefined = nodes.find((node: Node): boolean => node.id === id);
+                            if (!node) return;
+                            node.data.ip_address = event.target.value;
+                            setNodes([...nodes]);
+                            console.log(nodes);
+                        }}
+                        className='nodrag h-5 bg-white'
+                    />
+                </div>
+                <div>
+                    <p className='text-sm'>サブネットマスク</p>
+                    <Input
+                        aria-label='subnet-mask-input'
+                        size='sm'
+                        defaultValue={nodes.find((node: Node): boolean => node.id === id)?.data.subnet_mask}
+                        autoComplete='off'
+                        id='text'
+                        name='text'
+                        onChange={(event: ChangeEvent<HTMLInputElement>): void => {
+                            const node: Node | undefined = nodes.find((node: Node): boolean => node.id === id);
+                            if (!node) return;
+                            node.data.subnet_mask = event.target.value;
+                            setNodes([...nodes]);
+                            console.log(nodes);
+                        }}
+                        className='nodrag h-5 bg-white'
+                    />
+                </div>
                 {data.permitted_communications && (
                     <div>
                         <p className='text-sm'>許可する通信内容</p>
                         <Select
-                            defaultValue={nodes.find((node: Node): boolean => node.id === id)?.data.permitted_communications}
-                            onValueChange={(value: string): void => {
+                            aria-label='permitted-communications-select'
+                            size='sm'
+                            defaultSelectedKeys={[nodes.find((node: Node): boolean => node.id === id)?.data.permitted_communications]}
+                            onChange={(event: React.ChangeEvent<HTMLSelectElement>): void => {
                                 const node: Node | undefined = nodes.find((node: Node): boolean => node.id === id);
                                 if (!node) return;
-                                node.data.permitted_communications = value;
+                                node.data.permitted_communications = event.target.value;
                                 setNodes([...nodes]);
                                 console.log(nodes);
                             }}>
-                            <SelectTrigger className='h-5 bg-white'>
-                                <SelectValue placeholder='通信' />
-                            </SelectTrigger>
-                            <SelectContent className='bg-white text-black'>
-                                <SelectItem value='All'>All</SelectItem>
-                                <SelectItem value='http'>http, https</SelectItem>
-                                <SelectItem value='icmp'>icmp</SelectItem>
-                            </SelectContent>
+                            <SelectItem
+                                key='all'
+                                value='All'>
+                                All
+                            </SelectItem>
+                            <SelectItem
+                                key='http'
+                                value='http'>
+                                http, https
+                            </SelectItem>
+                            <SelectItem
+                                key='icmp'
+                                value='icmp'>
+                                icmp
+                            </SelectItem>
                         </Select>
                     </div>
                 )}
