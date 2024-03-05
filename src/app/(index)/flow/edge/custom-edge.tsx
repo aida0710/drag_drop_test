@@ -68,7 +68,7 @@ export const CustomEdge = ({id, data, sourceX, sourceY, targetX, targetY}: EdgeP
                                 );
                             }
                         }}>
-                        <SelectTrigger>
+                        <SelectTrigger className='h-7'>
                             <SelectValue placeholder={data.type} />
                         </SelectTrigger>
                         <SelectContent>
