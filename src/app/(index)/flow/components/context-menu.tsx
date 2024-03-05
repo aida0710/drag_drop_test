@@ -1,6 +1,7 @@
 import React, {useCallback} from 'react';
 import {Edge, Node, useReactFlow} from 'reactflow';
 import {Button} from '@/shadcn/ui/button';
+import {genNodeId} from '@/app/(index)/utils/utils';
 
 export interface ContextMenuProps {
     id: string;
@@ -22,7 +23,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({id, top, left, right, bottom, 
             x: node.position.x + 50,
             y: node.position.y + 50,
         };
-        addNodes({...node, id: `${node.id}-copy`, position});
+        addNodes({...node, id: genNodeId(), position});
     }, [id, getNode, addNodes]);
 
     const deleteNode = useCallback((): void => {

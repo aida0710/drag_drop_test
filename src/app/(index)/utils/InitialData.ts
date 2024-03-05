@@ -2,10 +2,11 @@ import {BackgroundVariant, Edge, Node} from 'reactflow';
 import {ThemeValue} from '@/app/(index)/flow/context/IThemeValue';
 import {IMiniMapValue} from '@/app/(index)/flow/context/IMiniMapValue';
 import {IDataSettings} from '@/app/(index)/flow/context/IDataSettings';
+import {genNodeId} from '@/app/(index)/utils/utils';
 
 export const initialNodes: Node[] = [
     {
-        id: '1',
+        id: genNodeId(),
         type: 'Gateway',
         position: {x: 0, y: 0},
         data: {

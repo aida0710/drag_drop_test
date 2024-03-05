@@ -24,9 +24,7 @@ import {SideMenu} from '@/app/(index)/components/side-menu';
 import {IMiniMapValue} from '@/app/(index)/flow/context/IMiniMapValue';
 import {initialEdges, initialNodes} from '@/app/(index)/utils/InitialData';
 import {EdgeTypes, EnumEdgeTypes} from '@/app/(index)/flow/edge/EdgeTypes';
-
-let id: number = 2;
-const getId = (): string => `${id++}`;
+import {genNodeId} from '@/app/(index)/utils/utils';
 
 export const FlowContents = () => {
     const {nodes, edges, settings, setNodes, setEdges} = React.useContext(DataContext);
@@ -110,7 +108,7 @@ export const FlowContents = () => {
             });
 
             const newNode: Node = {
-                id: getId(),
+                id: genNodeId(),
                 type,
                 position,
                 data: {
