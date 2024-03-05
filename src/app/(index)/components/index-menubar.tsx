@@ -1,4 +1,4 @@
-import {Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger} from '@/shadcn/ui/menubar';
+import {Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarTrigger} from '@/shadcn/ui/menubar';
 import {ExportButton} from '@/app/(index)/components/menu-items/file/export-button';
 import {ImportButton} from '@/app/(index)/components/menu-items/file/import-button';
 import {DataResetButton} from '@/app/(index)/components/menu-items/file/data-reset-button';
@@ -17,32 +17,6 @@ export const IndexMenubar = () => {
                     <ExportButton />
                     <MenubarSeparator />
                     <DataResetButton />
-                </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
-                <MenubarTrigger>Edit</MenubarTrigger>
-                <MenubarContent>
-                    <MenubarItem>
-                        Undo
-                        <MenubarShortcut>Ctrl+Z</MenubarShortcut>
-                    </MenubarItem>
-                    <MenubarItem>
-                        Redo
-                        <MenubarShortcut>Ctrl+Y</MenubarShortcut>
-                    </MenubarItem>
-                    <MenubarSeparator />
-                    <MenubarItem>
-                        Cut
-                        <MenubarShortcut>Ctrl+X</MenubarShortcut>
-                    </MenubarItem>
-                    <MenubarItem>
-                        Copy
-                        <MenubarShortcut>Ctrl+C</MenubarShortcut>
-                    </MenubarItem>
-                    <MenubarItem>
-                        Paste
-                        <MenubarShortcut>Ctrl+V</MenubarShortcut>
-                    </MenubarItem>
                 </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
