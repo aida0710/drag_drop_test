@@ -2,7 +2,7 @@
 
 ### 開発者
 - front-end
-  - github aida0710
+  - [aida0710](https://github.com/aida0710)
 
 - back-end
-  - github chissa0719
+  - [chissa0719](https://github.com/chissa0719)
