@@ -1,10 +1,10 @@
 'use client';
 
 import {redirect} from 'next/navigation';
-import {useToast} from '@/shadcn/ui/use-toast';
 import React from 'react';
+import {useToast} from '@/shadcn/ui/use-toast';
 
-export default function Page() {
+export default function Page(): void {
     const {toast} = useToast();
 
     React.useEffect((): void => {
