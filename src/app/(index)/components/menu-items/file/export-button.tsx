@@ -3,6 +3,7 @@ import {Label} from '@/shadcn/ui/label';
 import {Button} from '@/shadcn/ui/button';
 import React from 'react';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
+import {transformUtcDateToJstWithMinutes} from '@/app/(index)/utils/utils';
 
 export const ExportButton = () => {
     const {nodes, edges, settings} = React.useContext(DataContext);
@@ -16,8 +17,11 @@ export const ExportButton = () => {
                     const blob: Blob = new Blob([data], {type: 'application/json'});
                     const url: string = URL.createObjectURL(blob);
                     const link: HTMLAnchorElement = document.createElement('a');
+
+                    const time = transformUtcDateToJstWithMinutes();
+
                     link.href = url;
-                    link.download = 'nw-sim ' + transformUtcDateToJstWithMinutes() + '.json';
+                    link.download = 'nw-sim_' + `${time.year}-${time.month}-${time.day}_${time.hours}-${time.minutes}-${time.seconds}` + '.json';
                     link.click();
                     setTimeout(() => URL.revokeObjectURL(url), 1000);
                 }}
@@ -28,14 +32,3 @@ export const ExportButton = () => {
         </MenubarItem>
     );
 };
-
-export function transformUtcDateToJstWithMinutes(): string {
-    let date: Date = new Date();
-    let year: number = date.getFullYear();
-    let month: string = ('0' + (date.getMonth() + 1)).slice(-2);
-    let day: string = ('0' + date.getDate()).slice(-2);
-    let hours: string = ('0' + date.getHours()).slice(-2);
-    let minutes: string = ('0' + date.getMinutes()).slice(-2);
-    let seconds: string = ('0' + date.getSeconds()).slice(-2);
-    return `${year}年${month}月${day}日 ${hours}時${minutes}分${seconds}秒`;
-}
