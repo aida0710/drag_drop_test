@@ -1,3 +1,8 @@
 ## 100program 5期制作「ネットワークシミュレータ」
 
-front-end
+### 開発者
+- front-end
+  - github aida0710
+
+- back-end
+  - github chissa0719
