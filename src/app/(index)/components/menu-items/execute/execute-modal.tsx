@@ -1,14 +1,15 @@
 'use client';
 
 import {Button} from '@/shadcn/ui/button';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import React from 'react';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
 import {toast} from '@/shadcn/ui/use-toast';
 import {Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger} from '@/shadcn/ui/dialog';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/shadcn/ui/select';
+import {ErrorModal} from '@/app/(index)/components/menu-items/execute/error-modal';
 
-export const ExecuteButton = () => {
+export const ExecuteModal = () => {
     const {nodes, edges} = React.useContext(DataContext);
 
     async function execute(): Promise<void> {
@@ -17,22 +18,11 @@ export const ExecuteButton = () => {
             description: '少々お待ちください。',
         });
         try {
-            let response: Response = await axios.post('/api/execute', {nodes, edges});
+            let response: AxiosResponse = await axios.post('/api/execute', {nodes, edges});
+
             toast({
                 title: '処理が正常に完了しました',
-                description: (
-                    <div>
-                        <Dialog>
-                            <DialogTrigger>結果を表示する</DialogTrigger>
-                            <DialogContent>
-                                <DialogHeader>
-                                    <DialogTitle>実行できたよ！よかったね！</DialogTitle>
-                                    <DialogDescription>結果表示したいなーー＝！</DialogDescription>
-                                </DialogHeader>
-                            </DialogContent>
-                        </Dialog>
-                    </div>
-                ),
+                description: <ErrorModal message={await response.data} />,
             });
         } catch (error: any) {
             toast({
