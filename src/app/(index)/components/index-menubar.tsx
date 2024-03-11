@@ -6,7 +6,7 @@ import {ThemeButton} from '@/app/(index)/components/menu-items/setting/theme-but
 import {BackgroundVariantButton} from '@/app/(index)/components/menu-items/setting/background-variant-button';
 import {MiniMapButton} from '@/app/(index)/components/menu-items/setting/mini-map-button';
 import React from 'react';
-import {ExecuteModal} from '@/app/(index)/components/menu-items/execute/execute-modal';
+import {ExecuteComponents} from '@/app/(index)/components/menu-items/execute/execute-components';
 
 export const IndexMenubar = () => {
     return (
@@ -35,7 +35,7 @@ export const IndexMenubar = () => {
                     <MenubarItem>Feedback</MenubarItem>
                 </MenubarContent>
             </MenubarMenu>
-            <ExecuteModal />
+            <ExecuteComponents />
         </Menubar>
     );
 };
