@@ -25,9 +25,9 @@ export const ThemeButton = () => {
                 }}>
                 <SelectTrigger>Theme Change</SelectTrigger>
                 <SelectContent>
-                    <SelectItem value='system'>System</SelectItem>
-                    <SelectItem value='dark'>Dark</SelectItem>
-                    <SelectItem value='light'>Light</SelectItem>
+                    <SelectItem value={ThemeValue.System}>System</SelectItem>
+                    <SelectItem value={ThemeValue.Dark}>Dark</SelectItem>
+                    <SelectItem value={ThemeValue.Light}>Light</SelectItem>
                 </SelectContent>
             </Select>
         </MenubarItem>

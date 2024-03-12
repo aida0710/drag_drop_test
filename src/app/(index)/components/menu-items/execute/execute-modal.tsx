@@ -7,6 +7,7 @@ import {Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Dia
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/shadcn/ui/select';
 import {ErrorModal} from '@/app/(index)/components/menu-items/execute/error-modal';
 import {BackgroundVariant, Node} from 'reactflow';
+import {EnumExecuteTypes} from '@/app/api/execute/EnumExecuteTypes';
 
 interface ExecuteModalProps {
     selectedSourceNode: string;
@@ -105,7 +106,7 @@ export const ExecuteModal = ({
                                 <SelectValue placeholder='送信方法を選択してください' />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value='ping'>Ping</SelectItem>
+                                <SelectItem value={EnumExecuteTypes.Ping}>Ping</SelectItem>
                             </SelectContent>
                         </Select>
                     </DialogDescription>
