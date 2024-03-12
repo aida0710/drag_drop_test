@@ -12,13 +12,14 @@ export const MiniMapButton = () => {
         <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
             <Label>MiniMap View</Label>
             <Select
+                defaultValue={settings.miniMap}
                 onValueChange={(value: IMiniMapValue) =>
                     setSettings({
                         ...settings,
                         miniMap: value,
                     })
                 }>
-                <SelectTrigger className='w-[180px]'>
+                <SelectTrigger className='w-full'>
                     <SelectValue placeholder='Minimap View Change' />
                 </SelectTrigger>
                 <SelectContent>

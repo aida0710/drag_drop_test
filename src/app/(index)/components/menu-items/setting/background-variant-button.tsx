@@ -12,13 +12,14 @@ export const BackgroundVariantButton = () => {
         <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
             <Label>Background Design</Label>
             <Select
+                defaultValue={settings.backgroundVariant}
                 onValueChange={(value: BackgroundVariant) =>
                     setSettings({
                         ...settings,
                         backgroundVariant: value,
                     })
                 }>
-                <SelectTrigger className='w-[180px]'>
+                <SelectTrigger className='w-full'>
                     <SelectValue placeholder='Design Change' />
                 </SelectTrigger>
                 <SelectContent>

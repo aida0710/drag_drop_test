@@ -15,6 +15,7 @@ export const ThemeButton = () => {
         <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
             <Label>Theme</Label>
             <Select
+                defaultValue={settings.pageTheme}
                 onValueChange={(value: ThemeValue): void => {
                     setSettings({
                         ...settings,
