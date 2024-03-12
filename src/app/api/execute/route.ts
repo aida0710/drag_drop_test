@@ -27,6 +27,10 @@ export async function POST(req: Request): Promise<Response> {
         });
     }
 
+    if (!Object.values(EnumExecuteTypes).includes(data.execute.type)) {
+        return Response.json(prefix + '実行タイプが不正です。(' + data.execute.type + ')', {status: 400});
+    }
+
     const ipAddresses: Set<any> = new Set(); // 重複チェックのためのSet
 
     for (const node of data.nodes) {
