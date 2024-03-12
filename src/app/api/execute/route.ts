@@ -1,4 +1,5 @@
 import {ISendData} from '@/app/api/execute/ISendData';
+import {EnumExecuteTypes} from '@/app/api/execute/EnumExecuteTypes';
 
 const prefix: string = 'データチェック: ';
 
@@ -18,6 +19,12 @@ export async function POST(req: Request): Promise<Response> {
     const data: ISendData = await req.json();
     if (data.nodes.length === 0) {
         return Response.json(prefix + 'ノードデータがありません。', {status: 400});
+    }
+
+    if (data.execute.to_node_id === data.execute.from_node_id) {
+        return Response.json(prefix + '送信元と送信先が同じです。(form: ' + data.execute.from_node_id + ' / to: ' + data.execute.to_node_id + ')', {
+            status: 400,
+        });
     }
 
     const ipAddresses: Set<any> = new Set(); // 重複チェックのためのSet
