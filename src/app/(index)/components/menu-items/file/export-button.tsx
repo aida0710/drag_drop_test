@@ -4,6 +4,7 @@ import {Button} from '@/shadcn/ui/button';
 import React from 'react';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
 import {transformUtcDateToJstWithMinutes} from '@/app/(index)/utils/utils';
+import {Comment} from '@/app/(index)/components/menu-items/utils/comment';
 
 export const ExportButton = () => {
     const {nodes, edges, settings} = React.useContext(DataContext);
@@ -11,6 +12,7 @@ export const ExportButton = () => {
     return (
         <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
             <Label htmlFor='file_input_data_export'>Data Export</Label>
+            <Comment comment="設定やバックアップ履歴、ノードの入力データなどを含むほぼ全てのデータをエクスポートできます。"/>
             <Button
                 onClick={(): void => {
                     const data: string = JSON.stringify({nodes, edges, settings});

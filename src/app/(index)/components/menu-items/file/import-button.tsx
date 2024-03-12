@@ -4,6 +4,7 @@ import {Label} from '@/shadcn/ui/label';
 import {Input} from '@/shadcn/ui/input';
 import {toast, useToast} from '@/shadcn/ui/use-toast';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
+import {Comment} from '@/app/(index)/components/menu-items/utils/comment';
 
 export const ImportButton = () => {
     const {setNodes, setEdges, setSettings} = React.useContext(DataContext);
@@ -16,6 +17,7 @@ export const ImportButton = () => {
             }}
             className='grid w-full max-w-sm items-center gap-1.5'>
             <Label htmlFor='file_input_data_import'>Data Import</Label>
+            <Comment comment='設定やバックアップ履歴、ノードの入力データなどを含むほぼ全てのデータが適用されます。現在のデータはなくなるものとして考えてください。' />
             <Input
                 id='file_input_data_import'
                 type='file'
