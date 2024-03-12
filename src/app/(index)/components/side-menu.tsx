@@ -1,5 +1,4 @@
 import React from 'react';
-import {CustomNode} from '@/app/(index)/flow/node/custom-node';
 
 export const SideMenu = () => {
     const onDragStart = (event: React.DragEvent<HTMLDivElement>, nodeType: string) => {
@@ -42,12 +41,4 @@ export const SideMenu = () => {
             </div>
         </aside>
     );
-};
-
-export const NodeTypes = {
-    Gateway: CustomNode,
-    L3Switch: CustomNode,
-    L2Switch: CustomNode,
-    Server: CustomNode,
-    Firewall: CustomNode,
 };
