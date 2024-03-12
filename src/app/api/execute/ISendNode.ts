@@ -5,5 +5,5 @@ export interface ISendNode {
         label: string;
         ip_address: string;
         subnet_mask: string;
-    }
+    };
 }

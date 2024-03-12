@@ -12,7 +12,7 @@ export const ExportButton = () => {
     return (
         <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
             <Label htmlFor='file_input_data_export'>Data Export</Label>
-            <Comment comment="設定やバックアップ履歴、ノードの入力データなどを含むほぼ全てのデータをエクスポートできます。"/>
+            <Comment comment='設定やバックアップ履歴、ノードの入力データなどを含むほぼ全てのデータをエクスポートできます。' />
             <Button
                 onClick={(): void => {
                     const data: string = JSON.stringify({nodes, edges, settings});

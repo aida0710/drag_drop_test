@@ -40,7 +40,7 @@ export const ExecuteModal = ({
                     type: selectedMethod,
                 },
                 nodes,
-                edges
+                edges,
             });
 
             toast({

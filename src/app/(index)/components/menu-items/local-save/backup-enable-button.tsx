@@ -12,8 +12,8 @@ export const BackupEnableButton = () => {
     return (
         <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
             <Label>Local Backups</Label>
-            <Comment comment="バックアップの有効化/無効化。"/>
-            <Comment comment="複数ウィンドウで開くとデータの損失につながる場合があります。"/>
+            <Comment comment='バックアップの有効化/無効化。' />
+            <Comment comment='複数ウィンドウで開くとデータの損失につながる場合があります。' />
             <Select
                 defaultValue={settings.localBackups}
                 onValueChange={(value: ILocalBackup) =>

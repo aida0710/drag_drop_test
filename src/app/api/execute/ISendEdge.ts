@@ -4,5 +4,5 @@ export interface ISendEdge {
     target: string;
     data: {
         type: string;
-    }
+    };
 }
