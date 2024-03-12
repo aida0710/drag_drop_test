@@ -33,7 +33,15 @@ export const ExecuteModal = ({
             description: '少々お待ちください。',
         });
         try {
-            let response: AxiosResponse = await axios.post('/api/execute', {nodes, edges});
+            let response: AxiosResponse = await axios.post('/api/execute', {
+                execute: {
+                    to_node_id: selectedSourceNode,
+                    from_node_id: selectedDestinationNode,
+                    type: selectedMethod,
+                },
+                nodes,
+                edges
+            });
 
             toast({
                 title: '処理が正常に完了しました',
