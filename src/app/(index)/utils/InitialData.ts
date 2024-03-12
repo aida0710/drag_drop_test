@@ -3,6 +3,7 @@ import {ThemeValue} from '@/app/(index)/flow/context/IThemeValue';
 import {IMiniMapValue} from '@/app/(index)/flow/context/IMiniMapValue';
 import {IDataSettings} from '@/app/(index)/flow/context/IDataSettings';
 import {genNodeId} from '@/app/(index)/utils/utils';
+import {ILocalBackup} from '@/app/(index)/flow/context/ILocalBackup';
 
 export const initialNodes: Node[] = [
     {
@@ -14,13 +15,15 @@ export const initialNodes: Node[] = [
             ip_address: '0.0.0.0',
             subnet_mask: '255.255.255.0',
         },
-    }
+    },
 ];
 
 export const initialEdges: Edge[] = [];
 
 export const initialSettings: IDataSettings = {
-    backgroundVariant: BackgroundVariant.Lines,
+    backgroundVariant: BackgroundVariant.Dots,
     pageTheme: ThemeValue.Dark,
     miniMap: IMiniMapValue.Hidden,
+    localBackups: ILocalBackup.Disable,
+    localBackupsInterval: '0',
 };
