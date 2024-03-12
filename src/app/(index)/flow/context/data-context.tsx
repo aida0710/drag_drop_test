@@ -18,11 +18,9 @@ const initialContext: IDataContext = {
         localBackups: ILocalBackup.Disable,
         localBackupsInterval: '0',
     },
-    localBackups: [],
     setNodes: (_data: Partial<Node[]>): void => {},
     setEdges: (_data: Partial<Edge[]>): void => {},
     setSettings: (_data: Partial<IDataSettings>): void => {},
-    setLocalBackups: (_data: {nodes: Node[]; edges: Edge[]}[]): void => {},
 };
 
 //全てのデータを保持するコンテキスト

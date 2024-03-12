@@ -13,10 +13,9 @@ export default function Page() {
     const [nodes, setNodes] = React.useState<Node[]>([]);
     const [edges, setEdges] = React.useState<Edge[]>([]);
     const [settings, setSettings] = React.useState<IDataSettings>(initialSettings);
-    const [localBackups, setLocalBackups] = React.useState<{nodes: Node[]; edges: Edge[]}[]>([]);
 
     return (
-        <DataContext.Provider value={{nodes, edges, settings, localBackups, setNodes, setEdges, setSettings, setLocalBackups}}>
+        <DataContext.Provider value={{nodes, edges, settings, setNodes, setEdges, setSettings}}>
             <div className='w-full'>
                 <IndexMenubar />
                 <FlowContents />
