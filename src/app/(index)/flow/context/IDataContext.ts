@@ -5,10 +5,7 @@ export interface IDataContext {
     nodes: Node[];
     edges: Edge[];
     settings: IDataSettings;
-    localBackups: {
-        nodes: Node[];
-        edges: Edge[];
-    }[];
+    localBackups: Array<{nodes: Node[]; edges: Edge[]}>;
     setNodes: (data: Node[]) => void;
     setEdges: (data: Edge[]) => void;
     setSettings: (data: IDataSettings) => void;
