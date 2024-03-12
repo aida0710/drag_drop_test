@@ -50,7 +50,7 @@ export const BackupButton = () => {
                         // バックアップリストをローカルストレージに再保存します
                         localStorage.setItem('local_backup', JSON.stringify(existingBackups));
 
-                        console.log('Local storage backup: ', localStorage.getItem('local_backup'));
+                        //console.log('Local storage backup: ', localStorage.getItem('local_backup'));
 
                         toast({
                             title: 'Success ' + localStorage.getItem('local_backup')?.length + '/25',
