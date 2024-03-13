@@ -4,6 +4,7 @@ import React from 'react';
 import {Label} from '@/shadcn/ui/label';
 import {MenubarItem} from '@/shadcn/ui/menubar';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
+import {Comment} from '@/app/(index)/components/menu-items/utils/comment';
 
 export const BackgroundVariantButton = () => {
     const {settings, setSettings} = React.useContext(DataContext);
@@ -11,6 +12,7 @@ export const BackgroundVariantButton = () => {
     return (
         <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
             <Label>Background Design</Label>
+            <Comment comment='背景のデザインを変更します。' />
             <Select
                 defaultValue={settings.backgroundVariant}
                 onValueChange={(value: BackgroundVariant) =>

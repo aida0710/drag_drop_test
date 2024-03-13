@@ -4,6 +4,7 @@ import {Label} from '@/shadcn/ui/label';
 import {MenubarItem} from '@/shadcn/ui/menubar';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
 import {IMiniMapValue} from '@/app/(index)/flow/context/IMiniMapValue';
+import {Comment} from '@/app/(index)/components/menu-items/utils/comment';
 
 export const MiniMapButton = () => {
     const {settings, setSettings} = React.useContext(DataContext);
@@ -11,6 +12,7 @@ export const MiniMapButton = () => {
     return (
         <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
             <Label>MiniMap View</Label>
+            <Comment comment='ミニマップの表示/非表示を変更します。' />
             <Select
                 defaultValue={settings.miniMap}
                 onValueChange={(value: IMiniMapValue) =>
