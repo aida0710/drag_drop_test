@@ -24,7 +24,9 @@ export const FeedbackButtons = () => {
         <div>
             {FeedbackLinks.map((feedback: FeedbackLink, index: number) => {
                 return (
-                    <MenubarItem>
+                    <MenubarItem
+                        key={index}
+                        className='w-full'>
                         <Link
                             key={index}
                             className='w-full'
