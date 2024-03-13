@@ -9,7 +9,7 @@ import {ILocalBackup} from '@/app/(index)/flow/context/ILocalBackup';
 import {toast} from '@/shadcn/ui/use-toast';
 
 export const BackupButton = () => {
-    const {nodes, edges, settings, localBackups, setLocalBackups} = React.useContext(DataContext);
+    const {nodes, edges, settings} = React.useContext(DataContext);
 
     function time(): string {
         const time = transformUtcDateToJstWithMinutes();
