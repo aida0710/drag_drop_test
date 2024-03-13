@@ -43,6 +43,7 @@ export const ImportButton = () => {
                                 setNodes(file.nodes);
                                 setEdges(file.edges);
                                 setSettings(file.settings);
+                                localStorage.setItem('local_backup', JSON.stringify(file.localstorage));
                                 toast({
                                     title: 'Success',
                                     description: 'ファイルの読み込みに成功しました。',
