@@ -15,7 +15,12 @@ export const ExportButton = () => {
             <Comment comment='設定やバックアップ履歴、ノードの入力データなどを含むほぼ全てのデータをエクスポートできます。' />
             <Button
                 onClick={(): void => {
-                    const data: string = JSON.stringify({nodes, edges, settings});
+                    const data: string = JSON.stringify({
+                        nodes,
+                        edges,
+                        settings,
+                        localstorage: JSON.parse(localStorage.getItem('local_backup')?.toString() || '{}'),
+                    });
                     const blob: Blob = new Blob([data], {type: 'application/json'});
                     const url: string = URL.createObjectURL(blob);
                     const link: HTMLAnchorElement = document.createElement('a');
