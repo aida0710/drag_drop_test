@@ -1,4 +1,4 @@
-import {Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarTrigger} from '@/shadcn/ui/menubar';
+import {Menubar, MenubarContent, MenubarMenu, MenubarTrigger} from '@/shadcn/ui/menubar';
 import {ExportButton} from '@/app/(index)/components/menu-items/file/export-button';
 import {ImportButton} from '@/app/(index)/components/menu-items/file/import-button';
 import {DataResetButton} from '@/app/(index)/components/menu-items/file/data-reset-button';
@@ -11,8 +11,8 @@ import {BackupEnableButton} from '@/app/(index)/components/menu-items/local-save
 import {BackupIntervalInput} from '@/app/(index)/components/menu-items/local-save/backup-interval-input';
 import {BackupButton} from '@/app/(index)/components/menu-items/local-save/backup-button';
 import {BackupHistoryModal} from '@/app/(index)/components/menu-items/local-save/backup-history-modal';
-import {Label} from '@/shadcn/ui/label';
-import {Comment} from '@/app/(index)/components/menu-items/utils/comment';
+import {ModalMenubarItem} from '@/app/(index)/components/menu-items/utils/modal-menubar-item';
+import {FeedbackButtons} from '@/app/(index)/components/menu-items/help/feedback-buttons';
 
 export const IndexMenubar = () => {
     return (
@@ -22,8 +22,12 @@ export const IndexMenubar = () => {
                 <MenubarContent>
                     <ImportButton />
                     <ExportButton />
-                    <MenubarSeparator />
-                    <DataResetButton />
+                    <BackupButton />
+                    <ModalMenubarItem
+                        label='Local Data Reset'
+                        comments={['ローカルデータのバックアップをすべて削除します。']}>
+                        <DataResetButton />
+                    </ModalMenubarItem>
                 </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
@@ -31,17 +35,11 @@ export const IndexMenubar = () => {
                 <MenubarContent>
                     <BackupEnableButton />
                     <BackupIntervalInput />
-                    <BackupButton />
-                    <div className='rounded-sm hover:bg-accent hover:text-accent-foreground'>
-                        <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
-                            <Label>Backup History</Label>
-                            <Comment comment='最大25個までバックアップを閲覧出来ます。' />
-                            <Comment comment='バックアップを選択すると、そのバックアップが復元されます。' />
-                        </MenubarItem>
-                        <div className='mx-2 pb-1.5'>
-                            <BackupHistoryModal />
-                        </div>
-                    </div>
+                    <ModalMenubarItem
+                        label='Backup History'
+                        comments={['最大25個までバックアップを閲覧出来ます。', 'バックアップを選択すると、そのバックアップが復元されます。']}>
+                        <BackupHistoryModal />
+                    </ModalMenubarItem>
                 </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
@@ -53,10 +51,13 @@ export const IndexMenubar = () => {
                 </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
-                <MenubarTrigger>Help</MenubarTrigger>
+                <MenubarTrigger>Feedback</MenubarTrigger>
                 <MenubarContent>
-                    <MenubarItem>Documentation</MenubarItem>
-                    <MenubarItem>Feedback</MenubarItem>
+                    <ModalMenubarItem
+                        label='Feedback'
+                        comments={['Github Issueにてバグ報告、意見・要望を受け付けています。']}>
+                        <FeedbackButtons />
+                    </ModalMenubarItem>
                 </MenubarContent>
             </MenubarMenu>
             <ExecuteComponents />
