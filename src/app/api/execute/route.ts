@@ -1,5 +1,6 @@
 import {ISendData} from '@/app/api/execute/ISendData';
 import {EnumExecuteTypes} from '@/app/api/execute/EnumExecuteTypes';
+import {ISendNode} from '@/app/api/execute/ISendNode';
 
 const prefix: string = 'データチェック: ';
 
@@ -30,7 +31,8 @@ export async function POST(req: Request): Promise<Response> {
 
     const ipAddresses: Set<any> = new Set(); // 重複チェックのためのSet
 
-    for (const node of data.nodes) {
+    let node: ISendNode;
+    for (node of data.nodes) {
         // IPアドレスとサブネットマスクの形式チェック
         const ipParts: string[] = node.data.ip_address.split('.');
         const subnetParts: string[] = node.data.subnet_mask.split('.');
@@ -38,7 +40,8 @@ export async function POST(req: Request): Promise<Response> {
             return Response.json(prefix + 'IPアドレスまたはサブネットマスクの形式が正しくありません。', {status: 400});
         }
 
-        for (const part of [...ipParts, ...subnetParts]) {
+        let part: string;
+        for (part of [...ipParts, ...subnetParts]) {
             const number: number = Number(part);
             if (isNaN(number) || number < 0 || number > 255) {
                 return Response.json(prefix + 'IPアドレスまたはサブネットマスクの範囲が正しくありません。', {status: 400});
