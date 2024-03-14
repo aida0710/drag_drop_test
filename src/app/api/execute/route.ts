@@ -13,6 +13,7 @@ export async function POST(req: Request): Promise<Response> {
         return Response.json('Postメソッド以外は許可されていません。', {status: 405});
     }
 
+    console.log(req.headers);
     console.log(req.headers.get('origin'));
     if (req.headers.get('origin') !== 'http://localhost:3000') {
         return Response.json('外部からのapiアクセスは許可されていません。', {status: 403});
