@@ -41,8 +41,8 @@ export const ExecuteModal = ({
             }),
             {
                 loading: 'バックエンドサーバーに問い合わせています...',
-                success: async (res: AxiosResponse) => {
-                    return <ErrorModal message={res.data.message} />;
+                success: async (res: AxiosResponse): Promise<React.JSX.Element> => {
+                    return <ErrorModal message={res.data} />;
                 },
                 error: (error: any): any | string => {
                     console.error('Error: ', error.response.data);
