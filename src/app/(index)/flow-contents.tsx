@@ -59,10 +59,10 @@ export const FlowContents = () => {
 
                         flag = true;
                     });
-                toast('Success', {description: 'ローカルデータに保存されているバックアップデータから正常にデータを復元しました。'});
+                toast.success('Success', {description: 'ローカルデータに保存されているバックアップデータから正常にデータを復元しました。'});
             } catch (error: any) {
                 console.error('Local Data Import Error', error);
-                toast('Error', {description: 'ローカルデータに保存されているバックアップデータからデータを復元できませんでした。'});
+                toast.error('Error', {description: 'ローカルデータに保存されているバックアップデータからデータを復元できませんでした。'});
             }
         }
     }, [setEdges, setNodes]);
