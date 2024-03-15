@@ -2,12 +2,12 @@ import {Button} from '@/shadcn/ui/button';
 import axios, {AxiosResponse} from 'axios';
 import React from 'react';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
-import {toast} from '@/shadcn/ui/use-toast';
 import {Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger} from '@/shadcn/ui/dialog';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/shadcn/ui/select';
 import {ErrorModal} from '@/app/(index)/components/menu-items/execute/error-modal';
 import {BackgroundVariant, Node} from 'reactflow';
 import {EnumExecuteTypes} from '@/app/api/execute/EnumExecuteTypes';
+import {toast} from 'sonner';
 
 interface ExecuteModalProps {
     selectedSourceNode: string;
@@ -29,31 +29,27 @@ export const ExecuteModal = ({
     const {nodes, edges} = React.useContext(DataContext);
 
     async function execute(): Promise<void> {
-        toast({
-            title: '処理中',
-            description: '少々お待ちください。',
-        });
         try {
-            let response: AxiosResponse = await axios.post('/api/execute', {
-                execute: {
-                    to_node_id: selectedSourceNode,
-                    from_node_id: selectedDestinationNode,
-                    type: selectedMethod,
+            toast.promise(
+                axios.post('/api/execute', {
+                    execute: {
+                        to_node_id: selectedSourceNode,
+                        from_node_id: selectedDestinationNode,
+                        type: selectedMethod,
+                    },
+                    nodes,
+                    edges,
+                }),
+                {
+                    loading: 'バックエンドサーバーに問い合わせています...',
+                    success: async (res: AxiosResponse) => {
+                        return <ErrorModal message={res.data.message} />;
+                    },
+                    error: 'エラーが発生しました。',
                 },
-                nodes,
-                edges,
-            });
-
-            toast({
-                title: '処理が正常に完了しました',
-                description: <ErrorModal message={await response.data} />,
-            });
+            );
         } catch (error: any) {
-            toast({
-                title: error.response.status + ': エラー',
-                description: error.response.data,
-                variant: 'destructive',
-            });
+            toast.error(error.response.status + ':Error', {description: error.response.data});
         }
     }
 

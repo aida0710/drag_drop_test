@@ -25,9 +25,10 @@ import {IMiniMapValue} from '@/app/(index)/flow/context/IMiniMapValue';
 import {initialEdges, initialNodes} from '@/app/(index)/utils/InitialData';
 import {EdgeTypes, EnumEdgeTypes} from '@/app/(index)/flow/edge/EdgeTypes';
 import {genNodeId} from '@/app/(index)/utils/utils';
+import {toast} from 'sonner';
 
 export const FlowContents = () => {
-    const {nodes, edges, settings, setNodes, setEdges} = React.useContext(DataContext);
+    const {nodes, edges, settings, setNodes, setEdges, setSettings} = React.useContext(DataContext);
     const [menu, setMenu] = useState<ContextMenuProps | null>(null);
 
     // 右クリックメニュー
@@ -40,6 +41,30 @@ export const FlowContents = () => {
     useEffect((): void => {
         setNodes(initialNodes);
         setEdges(initialEdges);
+
+        const localBackup: string | null = localStorage.getItem('local_backup');
+        if (localBackup) {
+            try {
+                let flag: boolean = false;
+                const parsedBackup = JSON.parse(localBackup);
+                Object.keys(parsedBackup)
+                    .reverse()
+                    .forEach((key: string): void => {
+                        if (flag) return;
+                        const {nodes, edges, settings} = parsedBackup[key];
+
+                        setNodes(nodes);
+                        setEdges(edges);
+                        setSettings(settings);
+
+                        flag = true;
+                    });
+                toast('Success', {description: 'ローカルデータに保存されているバックアップデータから正常にデータを復元しました。'});
+            } catch (error: any) {
+                console.error('Local Data Import Error', error);
+                toast('Error', {description: 'ローカルデータに保存されているバックアップデータからデータを復元できませんでした。'});
+            }
+        }
     }, [setEdges, setNodes]);
 
     // ノードの変更

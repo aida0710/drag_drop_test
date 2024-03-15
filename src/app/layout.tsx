@@ -4,8 +4,7 @@ import {Metadata} from 'next';
 import {Inter} from 'next/font/google';
 import {NextFont} from 'next/dist/compiled/@next/font';
 import {ThemeProvider} from '@/app/layout/theme-provider';
-import {Toaster} from '@/shadcn/ui/toaster';
-
+import {Toaster} from '@/shadcn/ui/sonner';
 const site_name: string = 'Network Simulator';
 const site_description: string = 'Web simulator for network study';
 const url: string = 'https://www.nw-sim.net';
@@ -55,7 +54,7 @@ export default async function RootLayout({children}: {children: ReactNode}) {
     return (
         <html lang='ja'>
             <body className={inter.className}>
-                <Toaster />
+                <Toaster richColors expand position="bottom-right" />
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='dark'

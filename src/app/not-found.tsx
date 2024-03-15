@@ -2,16 +2,11 @@
 
 import {redirect} from 'next/navigation';
 import React from 'react';
-import {useToast} from '@/shadcn/ui/use-toast';
+import {toast} from 'sonner';
 
 export default function Page(): void {
-    const {toast} = useToast();
-
     React.useEffect((): void => {
-        toast({
-            title: 'アクセスしたページを閲覧する許可がありません。',
-            description: 'ホームページへリダイレクトを行いました。',
-        });
+        toast.error('Error', {description: 'アクセスしたページを閲覧する許可がありません。'});
         redirect('/');
     }, [toast]);
 }

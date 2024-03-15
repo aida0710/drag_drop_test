@@ -3,9 +3,9 @@ import {Button} from '@/shadcn/ui/button';
 import React from 'react';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
 import {ILocalBackup} from '@/app/(index)/flow/context/ILocalBackup';
-import {toast} from '@/shadcn/ui/use-toast';
 import {Comment} from '@/app/(index)/components/menu-items/utils/comment';
 import {Input} from '@/shadcn/ui/input';
+import {toast} from 'sonner';
 
 export const DataResetButton = () => {
     const {settings} = React.useContext(DataContext);
@@ -44,35 +44,22 @@ export const DataResetButton = () => {
                             variant='destructive'
                             onClick={(): void => {
                                 if (settings.localBackups === ILocalBackup.Enable) {
-                                    toast({
-                                        title: 'Error',
+                                    toast.error('Error', {
                                         description: 'ローカルストレージのバックアップが有効化されています。データの競合を防ぐ為に無効化してください。',
-                                        variant: 'destructive',
                                     });
+                                    return;
                                 }
                                 if (input !== '削除') {
-                                    toast({
-                                        title: 'Error',
-                                        description: '入力された値(' + input + ')が「削除」と一致しません。',
-                                        variant: 'destructive',
-                                    });
+                                    toast.error('Error', {description: '入力された値(' + input + ')が「削除」と一致しません。'});
                                     return;
                                 }
                                 try {
                                     localStorage.removeItem('local_backup');
-                                    toast({
-                                        title: 'Success',
-                                        description: 'ローカルストレージのデータを正常に削除しました。',
-                                    });
+                                    toast.success('Success', {description: 'ローカルストレージのデータを正常に削除しました。'});
                                 } catch (error: any) {
                                     console.error('Local storage data reset error: ', error);
-                                    toast({
-                                        title: 'Error',
-                                        description: 'ローカルストレージのデータの削除に失敗しました。',
-                                        variant: 'destructive',
-                                    });
+                                    toast.error('Error', {description: 'ローカルストレージのデータの削除に失敗しました。'});
                                 }
-
                                 // 入力データのリセット
                                 setInput('');
                             }}>

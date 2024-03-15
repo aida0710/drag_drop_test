@@ -6,7 +6,7 @@ import {Comment} from '@/app/(index)/components/menu-items/utils/comment';
 import {Button} from '@/shadcn/ui/button';
 import {transformUtcDateToJstWithMinutes} from '@/app/(index)/utils/utils';
 import {ILocalBackup} from '@/app/(index)/flow/context/ILocalBackup';
-import {toast} from '@/shadcn/ui/use-toast';
+import {toast} from 'sonner';
 
 export const BackupButton = () => {
     const {nodes, edges, settings} = React.useContext(DataContext);
@@ -20,15 +20,14 @@ export const BackupButton = () => {
         <MenubarItem className='grid w-full max-w-sm items-center gap-1.5'>
             <Label>Local Backup</Label>
             <Comment comment='現在の状態をローカルに書き込みます。' />
+            <Comment comment='ブラウザをリロードしても自動で最終バックアップデータを復元します。' />
+            <Comment comment='任意のバックアップデータを復元したい場合は、「Local Save」の「Backup History」を参照ください。' />
             <Button
                 variant='hover_none'
                 onClick={(): void => {
                     if (settings.localBackups === ILocalBackup.Disable) {
-                        toast({
-                            title: 'Error',
-                            description: 'ローカルストレージのバックアップが無効化されています。',
-                            variant: 'destructive',
-                        });
+                        toast.error('Error', {description: 'ローカルストレージのバックアップが無効化されています。'});
+                        return;
                     }
                     try {
                         let fileName: string = time();
@@ -39,9 +38,12 @@ export const BackupButton = () => {
                         let existingBackups = storageItem ? JSON.parse(storageItem) : {};
 
                         // バックアップリストが26個以上あれば、最も古いものを削除します
-                        if (Object.keys(existingBackups).length >= 26) {
+                        if (Object.keys(existingBackups).length >= 25) {
                             let oldestBackup: string = Object.keys(existingBackups).sort()[0];
                             delete existingBackups[oldestBackup];
+                            toast.warning('Notice', {
+                                description: 'ローカルストレージのバックアップが25個を超えました。最も古いバックアップを削除しました。' + oldestBackup,
+                            });
                         }
 
                         // 新しいバックアップをリストに追加します
@@ -52,17 +54,10 @@ export const BackupButton = () => {
 
                         //console.log('Local storage backup: ', localStorage.getItem('local_backup'));
 
-                        toast({
-                            title: 'Success ' + localStorage.getItem('local_backup')?.length + '/25',
-                            description: 'ローカルストレージにバックアップしました。',
-                        });
+                        toast.success('Success ' + Object.keys(existingBackups).length + '/25', {description: 'ローカルストレージにバックアップしました。'});
                     } catch (error: any) {
                         console.error('Local storage backup error: ', error);
-                        toast({
-                            title: 'Error',
-                            description: 'ローカルストレージのバックアップに失敗しました。',
-                            variant: 'destructive',
-                        });
+                        toast.error('Error', {description: 'ローカルストレージのバックアップに失敗しました。'});
                     }
                 }}>
                 データをセーブ
