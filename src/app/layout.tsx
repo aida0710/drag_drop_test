@@ -46,6 +46,7 @@ export const metadata: Metadata = {
         },
     },
     metadataBase: new URL(url),
+    icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
 const inter: NextFont = Inter({subsets: ['latin']});
