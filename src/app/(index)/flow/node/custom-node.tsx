@@ -42,7 +42,6 @@ export const CustomNode = ({id, type, data}: CustomNodeProps) => {
                         if (!node) return;
                         node.data.ip_address = event.target.value;
                         setNodes([...nodes]);
-                        console.log(nodes);
                     }}
                     className='nodrag h-5 bg-white'
                 />
@@ -57,7 +56,6 @@ export const CustomNode = ({id, type, data}: CustomNodeProps) => {
                         if (!node) return;
                         node.data.subnet_mask = event.target.value;
                         setNodes([...nodes]);
-                        console.log(nodes);
                     }}
                     className='nodrag h-5 bg-white'
                 />
@@ -71,7 +69,6 @@ export const CustomNode = ({id, type, data}: CustomNodeProps) => {
                                 if (!node) return;
                                 node.data.permitted_communications = value;
                                 setNodes([...nodes]);
-                                console.log(nodes);
                             }}>
                             <SelectTrigger className='h-5 bg-white'>
                                 <SelectValue placeholder='通信' />
