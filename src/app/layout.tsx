@@ -5,6 +5,8 @@ import {Inter} from 'next/font/google';
 import {NextFont} from 'next/dist/compiled/@next/font';
 import {ThemeProvider} from '@/app/layout/theme-provider';
 import {Toaster} from '@/shadcn/ui/sonner';
+import {ScreenSizeCheck} from '@/app/layout/screen-size-check';
+
 const site_name: string = 'Network Simulator';
 const site_description: string = 'Web simulator for network study';
 const url: string = 'https://www.nw-sim.net';
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
         template: `%s | ${site_name}`,
     },
     description: site_description,
-    keywords: ['network', 'simulator', 'web', 'study', "network simulator", "education", "web simulator"],
+    keywords: ['network', 'simulator', 'web', 'study', 'network simulator', 'education', 'web simulator'],
     openGraph: {
         type: 'website',
         locale: 'ja_JP',
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
         },
     },
     metadataBase: new URL(url),
-    icons: [{ rel: 'icon', url: '/favicon.ico' }],
+    icons: [{rel: 'icon', url: '/favicon.ico'}],
 };
 
 const inter: NextFont = Inter({subsets: ['latin']});
@@ -54,13 +56,17 @@ export default async function RootLayout({children}: {children: ReactNode}) {
     return (
         <html lang='ja'>
             <body className={inter.className}>
-                <Toaster richColors expand position="bottom-right" />
+                <Toaster
+                    richColors
+                    expand
+                    position='bottom-right'
+                />
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='dark'
                     enableSystem
                     disableTransitionOnChange>
-                    {children}
+                    <ScreenSizeCheck>{children}</ScreenSizeCheck>
                 </ThemeProvider>
             </body>
         </html>
