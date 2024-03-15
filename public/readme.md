@@ -1,3 +1,3 @@
 - icon https://icons8.jp/icon/iUDJxrHYhzTG/%E5%85%AB%E9%9D%A2%E4%BD%93
-- color #00FFAE
+- color #4251DC
 - background #1E1E1E
