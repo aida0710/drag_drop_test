@@ -18,7 +18,7 @@ import Image from 'next/image';
 export const IndexMenubar = () => {
     return (
         <Menubar>
-            <Image src="/icon-s512-background-none.svg" alt="icon" width={32} height={32} className="rounded" />
+            <Image src="/icon-s512-background-none.svg" alt="icon" width={32} height={32} className="rounded ml-2" />
             <MenubarMenu>
                 <MenubarTrigger>File</MenubarTrigger>
                 <MenubarContent>
