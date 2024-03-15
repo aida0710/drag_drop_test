@@ -13,10 +13,12 @@ import {BackupButton} from '@/app/(index)/components/menu-items/local-save/backu
 import {BackupHistoryModal} from '@/app/(index)/components/menu-items/local-save/backup-history-modal';
 import {ModalMenubarItem} from '@/app/(index)/components/menu-items/utils/modal-menubar-item';
 import {FeedbackButtons} from '@/app/(index)/components/menu-items/help/feedback-buttons';
+import Image from 'next/image';
 
 export const IndexMenubar = () => {
     return (
         <Menubar>
+            <Image src="/icon-s512-background-none.svg" alt="icon" width={32} height={32} className="rounded" />
             <MenubarMenu>
                 <MenubarTrigger>File</MenubarTrigger>
                 <MenubarContent>
