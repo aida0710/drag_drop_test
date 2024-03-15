@@ -29,28 +29,31 @@ export const ExecuteModal = ({
     const {nodes, edges} = React.useContext(DataContext);
 
     async function execute(): Promise<void> {
-        try {
-            toast.promise(
-                axios.post('/api/execute', {
-                    execute: {
-                        to_node_id: selectedSourceNode,
-                        from_node_id: selectedDestinationNode,
-                        type: selectedMethod,
-                    },
-                    nodes,
-                    edges,
-                }),
-                {
-                    loading: 'バックエンドサーバーに問い合わせています...',
-                    success: async (res: AxiosResponse) => {
-                        return <ErrorModal message={res.data.message} />;
-                    },
-                    error: 'エラーが発生しました。',
+        toast.promise(
+            axios.post('/api/execute', {
+                execute: {
+                    to_node_id: selectedSourceNode,
+                    from_node_id: selectedDestinationNode,
+                    type: selectedMethod,
                 },
-            );
-        } catch (error: any) {
-            toast.error(error.response.status + ':Error', {description: error.response.data});
-        }
+                nodes,
+                edges,
+            }),
+            {
+                loading: 'バックエンドサーバーに問い合わせています...',
+                success: async (res: AxiosResponse) => {
+                    return <ErrorModal message={res.data.message} />;
+                },
+                error: (error: any): any | string => {
+                    console.error('Error: ', error.response.data);
+                    if (error.response) {
+                        return error.response.data;
+                    } else {
+                        return 'Unknown error occurred';
+                    }
+                },
+            },
+        );
     }
 
     return (
