@@ -51,7 +51,7 @@ export const KeyPress = () => {
                 console.log(`Time since last save: ${timeSinceLastSave / 1000} seconds`);
             }
         }
-    }, [lastSavedTime]);
+    }, [lastSavedTime, ctrlAndCPressed]);
 
     return <></>;
 };
