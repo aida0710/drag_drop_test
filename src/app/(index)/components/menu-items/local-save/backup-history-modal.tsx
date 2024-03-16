@@ -9,7 +9,7 @@ export const BackupHistoryModal = () => {
                 <Button
                     className='w-full'
                     variant='hover_none'>
-                    Backup History
+                    バックアップ履歴を見る
                 </Button>
             </DrawerTrigger>
             <DrawerContent>

@@ -2,7 +2,6 @@ import {Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Dia
 import {Button} from '@/shadcn/ui/button';
 import React from 'react';
 import {DataContext} from '@/app/(index)/flow/context/data-context';
-import {ILocalBackup} from '@/app/(index)/flow/context/ILocalBackup';
 import {Comment} from '@/app/(index)/components/menu-items/utils/comment';
 import {Input} from '@/shadcn/ui/input';
 import {toast} from 'sonner';
@@ -43,12 +42,6 @@ export const DataResetButton = () => {
                         <Button
                             variant='destructive'
                             onClick={(): void => {
-                                if (settings.localBackups === ILocalBackup.Enable) {
-                                    toast.error('Error', {
-                                        description: 'ローカルストレージのバックアップが有効化されています。データの競合を防ぐ為に無効化してください。',
-                                    });
-                                    return;
-                                }
                                 if (input !== '削除') {
                                     toast.error('Error', {description: '入力された値(' + input + ')が「削除」と一致しません。'});
                                     return;

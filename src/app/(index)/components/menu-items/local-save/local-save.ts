@@ -1,4 +1,3 @@
-import {ILocalBackup} from '@/app/(index)/flow/context/ILocalBackup';
 import {toast} from 'sonner';
 import {transformUtcDateToJstWithMinutes} from '@/app/(index)/utils/utils';
 import {Edge, Node} from 'reactflow';
@@ -10,10 +9,6 @@ function time(): string {
 }
 
 export function localSave(nodes: Node[], edges: Edge[], settings: IDataSettings) {
-    if (settings.localBackups === ILocalBackup.Disable) {
-        toast.error('Error', {description: 'ローカルストレージのバックアップが無効化されています。'});
-        return;
-    }
     try {
         let fileName: string = time();
         const currentBackup = {nodes, edges, settings};

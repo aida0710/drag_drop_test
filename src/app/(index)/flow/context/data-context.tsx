@@ -6,7 +6,6 @@ import {IDataContext} from '@/app/(index)/flow/context/IDataContext';
 import {IDataSettings} from '@/app/(index)/flow/context/IDataSettings';
 import {ThemeValue} from '@/app/(index)/flow/context/IThemeValue';
 import {IMiniMapValue} from '@/app/(index)/flow/context/IMiniMapValue';
-import {ILocalBackup} from '@/app/(index)/flow/context/ILocalBackup';
 
 const initialContext: IDataContext = {
     nodes: [],
@@ -15,8 +14,6 @@ const initialContext: IDataContext = {
         backgroundVariant: BackgroundVariant.Lines,
         pageTheme: ThemeValue.Dark,
         miniMap: IMiniMapValue.Hidden,
-        localBackups: ILocalBackup.Disable,
-        localBackupsInterval: '0',
     },
     setNodes: (_data: Partial<Node[]>): void => {},
     setEdges: (_data: Partial<Edge[]>): void => {},
