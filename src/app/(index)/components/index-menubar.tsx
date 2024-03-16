@@ -7,8 +7,6 @@ import {BackgroundVariantButton} from '@/app/(index)/components/menu-items/setti
 import {MiniMapButton} from '@/app/(index)/components/menu-items/setting/mini-map-button';
 import React from 'react';
 import {ExecuteComponents} from '@/app/(index)/components/menu-items/execute/execute-components';
-import {BackupEnableButton} from '@/app/(index)/components/menu-items/local-save/backup-enable-button';
-import {BackupIntervalInput} from '@/app/(index)/components/menu-items/local-save/backup-interval-input';
 import {BackupButton} from '@/app/(index)/components/menu-items/local-save/backup-button';
 import {BackupHistoryModal} from '@/app/(index)/components/menu-items/local-save/backup-history-modal';
 import {ModalMenubarItem} from '@/app/(index)/components/menu-items/utils/modal-menubar-item';
@@ -24,23 +22,21 @@ export const IndexMenubar = () => {
                 <MenubarContent>
                     <ImportButton />
                     <ExportButton />
-                    <BackupButton />
-                    <ModalMenubarItem
-                        label='Local Data Reset'
-                        comments={['ローカルデータのバックアップをすべて削除します。']}>
-                        <DataResetButton />
-                    </ModalMenubarItem>
                 </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
                 <MenubarTrigger>Local Save</MenubarTrigger>
                 <MenubarContent>
-                    <BackupEnableButton />
-                    <BackupIntervalInput />
+                    <BackupButton />
                     <ModalMenubarItem
                         label='Backup History'
                         comments={['最大25個までバックアップを閲覧出来ます。', 'バックアップを選択すると、そのバックアップが復元されます。']}>
                         <BackupHistoryModal />
+                    </ModalMenubarItem>
+                    <ModalMenubarItem
+                        label='Local Data Reset'
+                        comments={['ローカルデータのバックアップをすべて削除します。']}>
+                        <DataResetButton />
                     </ModalMenubarItem>
                 </MenubarContent>
             </MenubarMenu>
