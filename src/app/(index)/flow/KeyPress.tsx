@@ -12,7 +12,7 @@ export const KeyPress = () => {
         if (ctrlAndCPressed) {
             localSave(nodes, edges, settings);
         }
-    }, [ctrlAndCPressed]);
+    }, [ctrlAndCPressed, edges, nodes, settings]);
 
     return <></>;
 };

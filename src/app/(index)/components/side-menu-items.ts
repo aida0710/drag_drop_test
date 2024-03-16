@@ -1,22 +1,22 @@
-export const SideMenuItems =[
+export const SideMenuItems = [
     {
         label: 'Gateway Node',
-        nodeType: 'Gateway'
+        nodeType: 'Gateway',
     },
     {
         label: 'L3 Switch Node',
-        nodeType: 'L3Switch'
+        nodeType: 'L3Switch',
     },
     {
         label: 'L2 Switch Node',
-        nodeType: 'L2Switch'
+        nodeType: 'L2Switch',
     },
     {
         label: 'Server Node',
-        nodeType: 'Server'
+        nodeType: 'Server',
     },
     {
         label: 'Firewall Node',
-        nodeType: 'Firewall'
-    }
-]
+        nodeType: 'Firewall',
+    },
+];

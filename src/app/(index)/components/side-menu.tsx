@@ -2,7 +2,7 @@ import React from 'react';
 import {SideMenuItems} from '@/app/(index)/components/side-menu-items';
 
 export const SideMenu = () => {
-    const onDragStart = (event: React.DragEvent<HTMLDivElement>, nodeType: string):void => {
+    const onDragStart = (event: React.DragEvent<HTMLDivElement>, nodeType: string): void => {
         event.dataTransfer.setData('application/reactflow', nodeType);
         event.dataTransfer.effectAllowed = 'move';
     };
