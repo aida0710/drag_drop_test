@@ -26,6 +26,7 @@ import {initialEdges, initialNodes} from '@/app/(index)/utils/InitialData';
 import {EdgeTypes, EnumEdgeTypes} from '@/app/(index)/flow/edge/EdgeTypes';
 import {genNodeId} from '@/app/(index)/utils/utils';
 import {toast} from 'sonner';
+import {KeyPress} from '@/app/(index)/flow/KeyPress';
 
 export const FlowContents = () => {
     const {nodes, edges, settings, setNodes, setEdges, setSettings} = React.useContext(DataContext);
@@ -193,6 +194,7 @@ export const FlowContents = () => {
                             )}
                             {settings.miniMap === IMiniMapValue.Indicate && <MiniMap />}
                             <Controls />
+                            <KeyPress />
                         </ReactFlow>
                     </div>
                 </div>
