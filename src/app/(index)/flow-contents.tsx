@@ -65,7 +65,7 @@ export const FlowContents = () => {
                 toast.error('Error', {description: 'ローカルデータに保存されているバックアップデータからデータを復元できませんでした。'});
             }
         }
-    }, [setEdges, setNodes]);
+    }, [setEdges, setNodes, setSettings]);
 
     // ノードの変更
     const onNodesChange: OnNodesChange = useCallback(
