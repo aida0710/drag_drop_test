@@ -140,7 +140,7 @@ export const FlowContents = () => {
                     label: `${type}`,
                     ip_address: '0.0.0.0',
                     subnet_mask: '255.255.255.0',
-                    ...(type === 'Firewall' ? {permitted_communications: 'none'} : {}),
+                    ...(type === 'Firewall' ? {permitted_communications: 'All'} : {}),
                 },
             };
             setNodes(nodes.concat(newNode));
