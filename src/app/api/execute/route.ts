@@ -1,7 +1,7 @@
 import {ISendData} from '@/app/api/execute/ISendData';
 import {EnumExecuteTypes} from '@/app/api/execute/EnumExecuteTypes';
 import {ISendNode} from '@/app/api/execute/ISendNode';
-import axios, {AxiosResponse} from "axios";
+import axios, {AxiosResponse} from 'axios';
 
 const prefix: string = 'データチェック: ';
 
@@ -63,16 +63,19 @@ export async function POST(req: Request): Promise<Response> {
 
     //console.log(JSON.stringify(data))
 
-    return await axios.post('http://127.0.0.1:3030/', {
-        data: JSON.stringify(data)
-    }).then((res: AxiosResponse<any>): Response => {
-        //console.log(res.data);
-        return Response.json(res.data.message, {status: res.data.status});
-    }).catch((error): Response => {
-        //console.log(error);
-        if (!error.response){
-            return Response.json('バックエンドサーバーに応答がありません。システム管理者に問い合わせてください。', {status: 500});
-        }
-        return Response.json(error.data.message, {status: error.data.status});
-    });
+    return await axios
+        .post('http://127.0.0.1:3030/', {
+            data: JSON.stringify(data),
+        })
+        .then((res: AxiosResponse<any>): Response => {
+            //console.log(res.data);
+            return Response.json(res.data.message, {status: res.data.status});
+        })
+        .catch((error): Response => {
+            //console.log(error);
+            if (!error.response) {
+                return Response.json('バックエンドサーバーに応答がありません。システム管理者に問い合わせてください。', {status: 500});
+            }
+            return Response.json(error.data.message, {status: error.data.status});
+        });
 }
